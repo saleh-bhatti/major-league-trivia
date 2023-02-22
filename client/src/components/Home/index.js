@@ -135,9 +135,14 @@ class Home extends Component {
           >
             {this.state.mode === 0 ? (
               <React.Fragment>
+
+                
+                There are Anuj's new edits
+
  
                 Welcome to MSci342!
                 here are salehs changes!!!!!
+
 
               </React.Fragment>
             ) : (
