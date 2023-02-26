@@ -182,11 +182,6 @@ class Home extends Component {
                                 </Link>
 
 
-
-
-
-
-
                             </Toolbar>
                         </AppBar>
                     </div>
