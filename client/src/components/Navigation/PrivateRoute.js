@@ -4,7 +4,7 @@ import Home from '../Home';
 import history from './history';
 import NFL from "../NFL";
 import NBA from "../NBA";
-import EPL from "../epl";
+import epl from "../epl";
 
 export default function PrivateRoute({
   //authenticated,
@@ -15,9 +15,10 @@ export default function PrivateRoute({
     <Router history={history}>
       <Switch>
         <Route path="/Home" exact component={Home} />
+        <Route path="/" exact component={Home} />
         <Route path="/NFL" exact component={NFL} />
         <Route path="/NBA" exact component={NBA} />
-        <Route path="/EPL" exact component={EPL} />
+        <Route path="/EPL" exact component={epl} />
 
 
 
