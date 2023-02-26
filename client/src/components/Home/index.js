@@ -145,7 +145,6 @@ class Home extends Component {
             <AppBar position="static">
               <Toolbar>
 
-
                 <Link
                   color="inherit"
                   style={{ cursor: "pointer" }}
@@ -171,29 +170,6 @@ class Home extends Component {
                   <Button color="inherit">NBA</Button>
                 </Link>
 
-                <Link
-                  color="inherit"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push('/NHL')}
-                >
-                  <Button color="inherit">NHL</Button>
-                </Link>
-
-                <Link
-                  color="inherit"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push('/MLS')}
-                >
-                  <Button color="inherit">MLS</Button>
-                </Link>
-
-                <Link
-                  color="inherit"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push('/MLB')}
-                >
-                  <Button color="inherit">MLB</Button>
-                </Link>
 
 
                 <Link
@@ -203,9 +179,6 @@ class Home extends Component {
                 >
                   <Button color="inherit">Priemer League</Button>
                 </Link>
-
-
-
 
 
               </Toolbar>

@@ -171,29 +171,6 @@ class Home extends Component {
                                     <Button color="inherit">NBA</Button>
                                 </Link>
 
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/NHL')}
-                                >
-                                    <Button color="inherit">NHL</Button>
-                                </Link>
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/MLS')}
-                                >
-                                    <Button color="inherit">MLS</Button>
-                                </Link>
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/MLB')}
-                                >
-                                    <Button color="inherit">MLB</Button>
-                                </Link>
 
 
                                 <Link
