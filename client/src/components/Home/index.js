@@ -6,6 +6,19 @@ import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
+import { makeStyles } from '@material-ui/core/styles';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import { Router, Switch, Route } from "react-router-dom";
+import history from '../Navigation/history';
+
 
 
 //Dev mode
@@ -24,15 +37,15 @@ const opacityValue = 0.9;
 
 const theme = createTheme({
   palette: {
-    type: 'dark',
+    type: 'light',
     background: {
-      default: "#000000"
+      default: "#e33371"
     },
     primary: {
-      main: "#52f1ff",
+      main: "#e33371",
     },
     secondary: {
-      main: "#b552f7",
+      main: "#e33371",
     },
   },
 });
@@ -126,35 +139,77 @@ class Home extends Component {
         style={{ minHeight: '100vh' }}
         className={classes.mainMessageContainer}
       >
+
         <Grid item>
+          <div className={classes.root}>
+            <AppBar position="static">
+              <Toolbar>
+
+                <Link
+                  color="inherit"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => history.push('/Home')}
+                >
+                  <Button color="inherit">Home</Button>
+                </Link>
+
+
+                <Link
+                  color="inherit"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => history.push('/NFL')}
+                >
+                  <Button color="inherit">NFL</Button>
+                </Link>
+
+                <Link
+                  color="inherit"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => history.push('/NBA')}
+                >
+                  <Button color="inherit">NBA</Button>
+                </Link>
+
+
+
+                <Link
+                  color="inherit"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => history.push('/EPL')}
+                >
+                  <Button color="inherit">Priemer League</Button>
+                </Link>
+
+
+              </Toolbar>
+            </AppBar>
+          </div>
+
 
           <Typography
-            variant={"h3"}
+            variant={"h1"}
             className={classes.mainMessage}
             align="flex-start"
           >
             {this.state.mode === 0 ? (
               <React.Fragment>
 
-                
-                There are Anuj's new edits
 
- 
-                Welcome to MSci342!
-                here are salehs changes!!!!!
+                Welcome to VASA Sports!
 
 
               </React.Fragment>
             ) : (
-              <React.Fragment>
-                Welcome back!
-              </React.Fragment>
-            )}
+                <React.Fragment>
+                  Welcome back!
+                </React.Fragment>
+              )}
           </Typography>
 
         </Grid>
       </Grid>
     )
+
 
 
     return (
