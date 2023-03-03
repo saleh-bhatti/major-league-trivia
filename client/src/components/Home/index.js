@@ -177,7 +177,7 @@ class Home extends Component {
                   style={{ cursor: "pointer" }}
                   onClick={() => history.push('/EPL')}
                 >
-                  <Button color="inherit">Priemer League</Button>
+                  <Button color="inherit">Premier League</Button>
                 </Link>
 
 

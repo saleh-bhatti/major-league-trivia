@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,11 +13,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Router, Switch, Route } from "react-router-dom";
 import history from '../Navigation/history';
+import TextField from "@material-ui/core/TextField";
 
 
 
@@ -80,6 +82,63 @@ const styles = theme => ({
 
 });
 
+const numOfTries = 5;
+
+function GuessComponent( {correctAnswer} ) {
+  const [inputValue, setInputValue] = useState("");
+  const [displayValues, setDisplayValues] = useState([]);
+  const [remainingGuesses, setRemainingGuesses] = useState(numOfTries);
+  const [gameOver, setGameOver] = useState(false);
+  const [numOfTriesUsed, setNumOfTriesUsed] = useState(0);
+
+  const handleSubmit = () => {
+    setDisplayValues([...displayValues, inputValue]);
+    setInputValue("");
+    setRemainingGuesses(remainingGuesses - 1);
+    setNumOfTriesUsed(numOfTries - remainingGuesses + 1);
+    if (inputValue === correctAnswer) {
+      setGameOver(true);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
+  return (
+    <div>
+      <TextField
+        label="Guess"
+        variant="outlined"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            handleSubmit();
+            setInputValue("");
+          }
+        }}
+        disabled={remainingGuesses === 0 || gameOver}
+      />
+      <div>
+        {displayValues.map((guess, index) => (
+          <div key={index}>{guess}</div>
+        ))}
+      </div>
+      {remainingGuesses === 0 && <div>Out of guesses!</div>}
+      {gameOver && (
+        <div>
+          <Typography>You guessed correctly in {numOfTries - remainingGuesses} tries!</Typography>
+        </div>
+      )}
+      {!gameOver && remainingGuesses > 0 && (
+        <div>{`Remaining guesses: ${remainingGuesses}`}</div>
+      )}
+    </div>
+  );
+}
 
 class Home extends Component {
     constructor(props) {
@@ -178,7 +237,7 @@ class Home extends Component {
                                     style={{ cursor: "pointer" }}
                                     onClick={() => history.push('/EPL')}
                                 >
-                                    <Button color="inherit">Priemer League</Button>
+                                    <Button color="inherit">Premier League</Button>
                                 </Link>
 
 
@@ -188,26 +247,29 @@ class Home extends Component {
                         </AppBar>
                     </div>
 
+                    <div>
+                    <Typography variant="h1">Guess The Player</Typography>
+                    <Box mt={2}>
+                    <Typography variant="body1">Who is the top scorer in the 2022-23 Premier League season?</Typography>
+                    </Box>
+                    </div>
+                    <div>
+                    <Box mt={2}>
+                    <GuessComponent correctAnswer={"Erling Haaland"}/>
+                    </Box>
+                    </div>
 
-                    <Typography
-                        variant={"h1"}
-                        className={classes.mainMessage}
-                        align="flex-start"
-                    >
-                        {this.state.mode === 0 ? (
-                            <React.Fragment>
-
-
-                                Welcome to VASA Priemer League Trivia!
-
-
-                            </React.Fragment>
-                        ) : (
-                                <React.Fragment>
-                                    Welcome back!
-                                </React.Fragment>
-                            )}
-                    </Typography>
+                    <div>
+                    <Typography variant="h1">Guess The Team</Typography>
+                    <Box mt={2}>
+                    <Typography variant="body1">Who is the current Premier League champion?</Typography>
+                    </Box>
+                    </div>
+                    <div>
+                    <Box mt={2}>
+                    <GuessComponent correctAnswer={"Manchester City"}/>
+                    </Box>
+                    </div>
 
                 </Grid>
             </Grid>
