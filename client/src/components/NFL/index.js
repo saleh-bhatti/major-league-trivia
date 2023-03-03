@@ -20,7 +20,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Router, Switch, Route } from "react-router-dom";
 import history from '../Navigation/history';
 import TextField from "@material-ui/core/TextField";
-
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 
 
 //Dev mode
@@ -149,45 +151,105 @@ class Home extends Component {
         }
     };
 
-    componentDidMount() {
-        //this.loadUserSettings();
-    }
-
-
-    loadUserSettings() {
-        this.callApiLoadUserSettings()
-            .then(res => {
-                //console.log("loadUserSettings returned: ", res)
-                var parsed = JSON.parse(res.express);
-                console.log("loadUserSettings parsed: ", parsed[0].mode)
-                this.setState({ mode: parsed[0].mode });
-            });
-    }
-
-    callApiLoadUserSettings = async () => {
-        const url = serverURL + "/api/loadUserSettings";
-
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                //authorization: `Bearer ${this.state.token}`
-            },
-            body: JSON.stringify({
-                userID: this.state.userID
-            })
-        });
-        const body = await response.json();
-        if (response.status !== 200) throw Error(body.message);
-        console.log("User settings: ", body);
-        return body;
-    }
+    correctanswermessage() {
+        alert('Correct Answer');
+      }
+      incorrectanswermessage() {
+        alert('Incorrect Answer');
+      }
 
     render() {
         const { classes } = this.props;
-
-
-
+        const Overundergame = () => {
+            const [selectedstatquestion, setselectedstatquestion] = React.useState('');
+            const [selectedoverbutton, setselectedoverbutton] = React.useState('');
+            const [selectedunderbutton, setselectedunderbutton] = React.useState('');
+        
+            const [correctanswer, setcorrectanswer] = React.useState('');
+            const [incorrectanswer, setincorrectanswer] = React.useState('');
+        
+            const overbuttonclick = (event) => {
+              console.log(event.target.value)
+              setselectedoverbutton(event.target.value);
+            }
+            const statquestionchange = (event) => {
+              console.log(event.target.value)
+              setselectedstatquestion(event.target.value);
+            }
+            const underbuttonclick = (event) => {
+              console.log(event.target.value)
+              setselectedunderbutton(event.target.value);
+            }
+        
+        
+        
+            const result = (event) => {
+        
+              console.log(selectedoverbutton)
+              console.log(selectedunderbutton)
+        
+              if (selectedstatquestion == "Did Lebron James average 30pts a game in the NBA in 2022?") {
+        
+              alert("Correct Answer")
+              }
+        
+              
+          }
+            return (
+              <Grid
+                container
+                spacing={6}
+                direction="column"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                style={{ minHeight: '100vh' }}
+              >
+                <Grid item>
+                  <Typography variant="h1">
+                   Over and Under Sports Game!
+                  </Typography>
+        
+                </Grid>
+        
+                <Questionselection onChange={statquestionchange} />
+                <Overbutton onChange={overbuttonclick} />
+                <Underbutton onChange={underbuttonclick} />
+        
+              </Grid>
+            )
+          }
+        
+          const Questionselection = (props) => {
+            return (
+              <Grid item>
+                <InputLabel> Select a sports statistics question</InputLabel>
+                <Select onChange={props.onChange} value={props.title}>
+                <MenuItem value={"Does Tom Brady have more than 30 touchdowns in 2022 NFL season?"}>Does Tom Brady have more than 30 touchdowns in 2022 NFL season?</MenuItem>
+                </Select>
+              </Grid>
+            )
+          }
+        
+          const Overbutton = (props) => {
+            return (
+              <Grid item>
+              <Button variant="contained" color="primary" onClick={this.correctanswermessage}>
+                Over
+              </Button>
+            </Grid>
+            )
+          }
+        
+          const Underbutton = (props) => {
+            return (
+              <Grid item>
+              <Button variant="contained" color="primary" onClick={this.incorrectanswermessage}>
+                Under
+              </Button>
+            </Grid>
+            )
+          }
+        
         const mainMessage = (
             <Grid
                 container
@@ -239,6 +301,15 @@ class Home extends Component {
                                 >
                                     <Button color="inherit">Premier League</Button>
                                 </Link>
+                                <Link
+                                     color="inherit"
+                                         style={{ cursor: "pointer" }}
+                                         onClick={() => history.push('/Profile')}
+                                              >
+                                         <Button color="inherit">Profile</Button>
+                                                    </Link>
+
+                                             <Button color="inherit">Log out</Button>
 
 
 
@@ -271,7 +342,9 @@ class Home extends Component {
                     <GuessComponent correctAnswer={"Kansas City Chiefs"}/>
                     </Box>
                     </div>
-
+                    <div>
+                        <Overundergame/>
+                    </div>
 
                 </Grid>
             </Grid>

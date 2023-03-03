@@ -18,8 +18,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Router, Switch, Route } from "react-router-dom";
 import history from '../Navigation/history';
-
-
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -80,16 +81,30 @@ const styles = theme => ({
 
 });
 
-
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.correctanswermessage = this.correctanswermessage.bind(this);
+    this.incorrectanswermessage = this.incorrectanswermessage.bind(this)
     this.state = {
       userID: 1,
-      mode: 0
+      mode: 0,
+      
     }
   };
+  correctanswermessage() {
+    alert('Correct Answer');
+  }
+  incorrectanswermessage() {
+    alert('Incorrect Answer');
+  }
 
+  componentDidMount() {
+    this.loadUserSettings();
+  }
+
+
+  
   componentDidMount() {
     //this.loadUserSettings();
   }
@@ -126,9 +141,7 @@ class Home extends Component {
 
   render() {
     const { classes } = this.props;
-
-
-
+  
     const mainMessage = (
       <Grid
         container
@@ -180,7 +193,17 @@ class Home extends Component {
                   <Button color="inherit">Premier League</Button>
                 </Link>
 
-
+                
+                  
+                
+                  <Link
+                     color="inherit"
+                   style={{ cursor: "pointer" }}
+                   onClick={() => history.push('/Profile')}
+                                >
+                  <Button color="inherit">Profile</Button>
+                  </Link>
+                   <Button color="inherit"> Log out </Button>
               </Toolbar>
             </AppBar>
           </div>
