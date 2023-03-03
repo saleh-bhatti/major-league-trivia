@@ -84,6 +84,54 @@ const styles = theme => ({
 
 });
 
+function NavBar(props) {
+    const { history } = props;
+  
+    return (
+      <AppBar position="static">
+        <Toolbar>
+          <Link
+            color="inherit"
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push('/Home')}
+          >
+            <Button color="inherit">Home</Button>
+          </Link>
+          <Link
+            color="inherit"
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push('/NFL')}
+          >
+            <Button color="inherit">NFL</Button>
+          </Link>
+          <Link
+            color="inherit"
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push('/NBA')}
+          >
+            <Button color="inherit">NBA</Button>
+          </Link>
+          <Link
+            color="inherit"
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push('/EPL')}
+          >
+            <Button color="inherit">Premier League</Button>
+          </Link>
+          <Link
+                     color="inherit"
+                   style={{ cursor: "pointer" }}
+                   onClick={() => history.push('/Profile')}
+                                >
+                  <Button color="inherit">Profile</Button>
+                  </Link>
+
+                  <Button color="inherit">Log out</Button>
+                            </Toolbar>
+                        </AppBar>
+    );
+  }
+  
 const numOfTries = 5;
 
 function GuessComponent( {correctAnswer} ) {
@@ -112,6 +160,7 @@ function GuessComponent( {correctAnswer} ) {
   return (
     <div>
       <TextField
+      id="guess-input"
         label="Guess"
         variant="outlined"
         value={inputValue}
@@ -132,7 +181,7 @@ function GuessComponent( {correctAnswer} ) {
       {remainingGuesses === 0 && <div>Out of guesses!</div>}
       {gameOver && (
         <div>
-          <Typography>You guessed correctly in {numOfTries - remainingGuesses} tries!</Typography>
+          <Typography>You guessed correctly in {numOfTriesUsed} tries!</Typography>
         </div>
       )}
       {!gameOver && remainingGuesses > 0 && (
@@ -141,6 +190,88 @@ function GuessComponent( {correctAnswer} ) {
     </div>
   );
 }
+
+const Overundergame = () => {
+    const [selectedButton, setSelectedButton] = React.useState('');
+    const [message, setMessage] = React.useState('');
+    const [gameOver, setGameOver] = React.useState(false);
+  
+    const question = "Did Lebron James average 30pts a game in the NBA in 2021-22?";
+    const correctAnswer = "Over";
+  
+    const handleButtonClick = (event) => {
+        if (!gameOver) {
+          const selectedValue = event.currentTarget.value;
+          setSelectedButton(selectedValue);
+      
+          if (selectedValue === correctAnswer) {
+            setMessage("Correct!");
+          } else {
+            setMessage("Incorrect :(");
+          }
+          setGameOver(true);
+        }
+      };
+  
+    return (
+      <Grid
+        container
+        spacing={6}
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        style={{ minHeight: '100vh' }}
+      >
+        <Grid item>
+          <Typography variant="h1">
+            Over and Under Sports Game!
+          </Typography>
+        </Grid>
+  
+        <Grid item>
+          <Typography variant="body1">
+            {question}
+          </Typography>
+        </Grid>
+  
+        <Grid item>
+          <Button
+            variant="contained"
+            color="primary"
+            value="Over"
+            onClick={handleButtonClick}
+            disabled={gameOver}
+          >
+            Over
+          </Button>
+        </Grid>
+  
+        <Grid item>
+          <Button
+            variant="contained"
+            color="primary"
+            value="Under"
+            onClick={handleButtonClick}
+            disabled={gameOver}
+          >
+            Under
+          </Button>
+        </Grid>
+  
+        {gameOver && (
+          <Grid item>
+            <Typography variant="h4">
+              {message}
+            </Typography>
+          </Grid>
+        )}
+      </Grid>
+    )
+  };
+  
+  
+
+
 
 
 class Home extends Component {
@@ -153,105 +284,8 @@ class Home extends Component {
         }
     };
 
-    correctanswermessage() {
-        alert('Correct Answer');
-      }
-      incorrectanswermessage() {
-        alert('Incorrect Answer');
-      }
-
     render() {
         const { classes } = this.props;
-        const Overundergame = () => {
-            const [selectedstatquestion, setselectedstatquestion] = React.useState('');
-            const [selectedoverbutton, setselectedoverbutton] = React.useState('');
-            const [selectedunderbutton, setselectedunderbutton] = React.useState('');
-        
-            const [correctanswer, setcorrectanswer] = React.useState('');
-            const [incorrectanswer, setincorrectanswer] = React.useState('');
-        
-            const overbuttonclick = (event) => {
-              console.log(event.target.value)
-              setselectedoverbutton(event.target.value);
-            }
-            const statquestionchange = (event) => {
-              console.log(event.target.value)
-              setselectedstatquestion(event.target.value);
-            }
-            const underbuttonclick = (event) => {
-              console.log(event.target.value)
-              setselectedunderbutton(event.target.value);
-            }
-        
-        
-        
-            const result = (event) => {
-        
-              console.log(selectedoverbutton)
-              console.log(selectedunderbutton)
-        
-              if (selectedstatquestion == "Did Lebron James average 30pts a game in the NBA in 2022?") {
-        
-              alert("Correct Answer")
-              }
-        
-              
-          }
-            return (
-              <Grid
-                container
-                spacing={6}
-                direction="column"
-                justifyContent="flex-start"
-                alignItems="flex-start"
-                style={{ minHeight: '100vh' }}
-              >
-                <Grid item>
-                  <Typography variant="h1">
-                   Over and Under Sports Game!
-                  </Typography>
-        
-                </Grid>
-        
-                <Questionselection onChange={statquestionchange} />
-                <Overbutton onChange={overbuttonclick} />
-                <Underbutton onChange={underbuttonclick} />
-        
-              </Grid>
-            )
-          }
-        
-          const Questionselection = (props) => {
-            return (
-              <Grid item>
-                <InputLabel> Select a sports statistics question</InputLabel>
-                <Select onChange={props.onChange} value={props.title}>
-                  <MenuItem value={"Did Lebron James average 30pts a game in the NBA in 2022?"}>Did Lebron James average 30pts a game in the NBA in 2022?</MenuItem>
-                </Select>
-              </Grid>
-            )
-          }
-        
-          const Overbutton = (props) => {
-            return (
-              <Grid item>
-              <Button variant="contained" color="primary" onClick={this.correctanswermessage}>
-                Over
-              </Button>
-            </Grid>
-            )
-          }
-        
-          const Underbutton = (props) => {
-            return (
-              <Grid item>
-              <Button variant="contained" color="primary" onClick={this.incorrectanswermessage}>
-                Under
-              </Button>
-            </Grid>
-            )
-          }
-        
         
         const mainMessage = (
             <Grid
@@ -266,56 +300,7 @@ class Home extends Component {
 
                 <Grid item>
                     <div className={classes.root}>
-                        <AppBar position="static">
-                            <Toolbar>
-
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/Home')}
-                                >
-                                    <Button color="inherit">Home</Button>
-                                </Link>
-
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/NFL')}
-                                >
-                                    <Button color="inherit">NFL</Button>
-                                </Link>
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/NBA')}
-                                >
-                                    <Button color="inherit">NBA</Button>
-                                </Link>
-
-
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/EPL')}
-                                >
-                                    <Button color="inherit">Premier League</Button>
-                                </Link>
-                                <Link
-                     color="inherit"
-                   style={{ cursor: "pointer" }}
-                   onClick={() => history.push('/Profile')}
-                                >
-                  <Button color="inherit">Profile</Button>
-                  </Link>
-
-                  <Button color="inherit">Log out</Button>
-
-                            </Toolbar>
-                        </AppBar>
+                    <NavBar history={this.props.history} />
                     </div>
 
                     <div>

@@ -81,23 +81,64 @@ const styles = theme => ({
 
 });
 
+function NavBar(props) {
+  const { history } = props;
+
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/Home')}
+        >
+          <Button color="inherit">Home</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/NFL')}
+        >
+          <Button color="inherit">NFL</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/NBA')}
+        >
+          <Button color="inherit">NBA</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/EPL')}
+        >
+          <Button color="inherit">Premier League</Button>
+        </Link>
+        <Link
+                   color="inherit"
+                 style={{ cursor: "pointer" }}
+                 onClick={() => history.push('/Profile')}
+                              >
+                <Button color="inherit">Profile</Button>
+                </Link>
+
+                <Button color="inherit">Log out</Button>
+                          </Toolbar>
+                      </AppBar>
+  );
+}
+
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.correctanswermessage = this.correctanswermessage.bind(this);
-    this.incorrectanswermessage = this.incorrectanswermessage.bind(this)
     this.state = {
       userID: 1,
       mode: 0,
       
     }
   };
-  correctanswermessage() {
-    alert('Correct Answer');
-  }
-  incorrectanswermessage() {
-    alert('Incorrect Answer');
-  }
+  
 
   componentDidMount() {
     this.loadUserSettings();
@@ -155,57 +196,7 @@ class Home extends Component {
 
         <Grid item>
           <div className={classes.root}>
-            <AppBar position="static">
-              <Toolbar>
-
-                <Link
-                  color="inherit"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push('/Home')}
-                >
-                  <Button color="inherit">Home</Button>
-                </Link>
-
-
-                <Link
-                  color="inherit"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push('/NFL')}
-                >
-                  <Button color="inherit">NFL</Button>
-                </Link>
-
-                <Link
-                  color="inherit"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push('/NBA')}
-                >
-                  <Button color="inherit">NBA</Button>
-                </Link>
-
-
-
-                <Link
-                  color="inherit"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => history.push('/EPL')}
-                >
-                  <Button color="inherit">Premier League</Button>
-                </Link>
-
-                
-                  
-                
-                  <Link
-                     color="inherit"
-                   style={{ cursor: "pointer" }}
-                   onClick={() => history.push('/Profile')}
-                                >
-                  <Button color="inherit">Profile</Button>
-                  </Link>
-                   <Button color="inherit"> Log out </Button>
-              </Toolbar>
-            </AppBar>
+          <NavBar history={this.props.history} />
           </div>
 
 
