@@ -31,7 +31,6 @@ describe('Smoke Test - NFL Page', () => {
   });
 });
 
-
 describe('Smoke Test - EPL Page', () => {
   it('can view the NFL page', () => {
     cy.visit('/Premier League');
