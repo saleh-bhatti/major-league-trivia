@@ -37,3 +37,50 @@ describe('Smoke Test - EPL Page', () => {
     cy.visit('/Premier League');
   });
 });
+
+describe('Smoke Test', () => {
+  it('can view the home page', () => {
+    cy.visit('/');
+    cy.contains('Welcome');
+  });
+});
+
+
+describe('Smoke Test', () => {
+  it('has home button', () => {
+    cy.visit('/');
+    cy.contains('Home');
+  });
+});
+describe('Smoke Test', () => {
+  it('has nfl tab', () => {
+    cy.visit('/');
+    cy.contains('NFL');
+  });
+
+
+});
+
+
+describe('Smoke Test', () => {
+  it('has nba tab', () => {
+    cy.visit('/');
+    cy.contains('NBA');
+  });
+});
+
+
+describe('Smoke Test', () => {
+  it('has epl tab', () => {
+    cy.visit('/');
+    cy.contains('Premier League');
+  });
+});
+
+
+describe('Smoke Test - Reload Pages', () => {
+  it('cy.reload() - can reload the page', () => {
+    cy.reload()
+    cy.reload(true)
+  });
+})
