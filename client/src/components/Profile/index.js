@@ -80,6 +80,55 @@ const styles = theme => ({
     },
 
 });
+
+function NavBar(props) {
+  const { history } = props;
+
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/Home')}
+        >
+          <Button color="inherit">Home</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/NFL')}
+        >
+          <Button color="inherit">NFL</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/NBA')}
+        >
+          <Button color="inherit">NBA</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/EPL')}
+        >
+          <Button color="inherit">Premier League</Button>
+        </Link>
+        <Link
+                   color="inherit"
+                 style={{ cursor: "pointer" }}
+                 onClick={() => history.push('/Profile')}
+                              >
+                <Button color="inherit">Profile</Button>
+                </Link>
+
+                <Button color="inherit">Log out</Button>
+                          </Toolbar>
+                      </AppBar>
+  );
+}
+
 const NBAteams = [
     "Atlanta Hawks",
 'Boston Celtics',
@@ -316,64 +365,14 @@ class Home extends Component {
             >
                 <Grid item>
                     <div className={classes.root}>
-                        <AppBar position="static">
-                            <Toolbar>
-
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/Home')}
-                                >
-                                    <Button color="inherit">Home</Button>
-                                </Link>
-
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/NFL')}
-                                >
-                                    <Button color="inherit">NFL</Button>
-                                </Link>
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/NBA')}
-                                >
-                                    <Button color="inherit">NBA</Button>
-                                </Link>
-
-
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/EPL')}
-                                >
-                                    <Button color="inherit">Priemer League</Button>
-                                </Link>
-
-                                <Link
-                                    color="inherit"
-                                    style={{ cursor: "pointer" }}
-                                    onClick={() => history.push('/Profile')}
-                                >
-                                    <Button color="inherit">Profile</Button>
-                                </Link>
-                                
-                                <Button color="inherit"> Log out</Button>
-
-                            </Toolbar>
-                        </AppBar>
+                    <NavBar history={this.props.history} />
                     </div>
                     <Typography
                         variant={"h4"}
                         className={classes.mainMessage}
                         align="flex-start"
                     >
-                        pick your favorite NBA team  
+                        Pick your favorite NBA team  
                     </Typography>
                     
                 </Grid>
@@ -386,7 +385,7 @@ class Home extends Component {
                         className={classes.mainMessage}
                         align="flex-start"
                     >
-                        pick your favorite NFL team  
+                        Pick your favorite NFL team  
                     </Typography>
                    < NFLteamSelection/>
             <Grid>
@@ -395,7 +394,7 @@ class Home extends Component {
                         className={classes.mainMessage}
                         align="flex-start"
                     >
-                        pick your favorite EPL team  
+                        Pick your favorite EPL team  
                     </Typography>
                    < EPLteamSelection/>
             </Grid>
