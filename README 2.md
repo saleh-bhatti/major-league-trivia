@@ -8,7 +8,3 @@ of sports through interactive games :)
 
 
 Installation Instructions:
-
-  1. git pull origin main the repository to your own local machine
-  2. Run "yarn dev" or "yarn start" to run the website on your local
-  3. Have fun with it and enjoy :) 
