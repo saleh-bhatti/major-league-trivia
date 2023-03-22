@@ -40,101 +40,101 @@ const fetch = require("node-fetch");
 const opacityValue = 0.9;
 
 const theme = createTheme({
-    palette: {
-        type: 'light',
-        background: {
-            default: "#e33371"
-        },
-        primary: {
-            main: "#e33371",
-        },
-        secondary: {
-            main: "#e33371",
-        },
+  palette: {
+    type: 'light',
+    background: {
+      default: "#e33371"
     },
+    primary: {
+      main: "#e33371",
+    },
+    secondary: {
+      main: "#e33371",
+    },
+  },
 });
 
 const styles = theme => ({
-    root: {
-        body: {
-            backgroundColor: "#000000",
-            opacity: opacityValue,
-            overflow: "hidden",
-        },
+  root: {
+    body: {
+      backgroundColor: "#000000",
+      opacity: opacityValue,
+      overflow: "hidden",
     },
-    mainMessage: {
-        opacity: opacityValue,
-    },
+  },
+  mainMessage: {
+    opacity: opacityValue,
+  },
 
-    mainMessageContainer: {
-        marginTop: "20vh",
-        marginLeft: theme.spacing(20),
-        [theme.breakpoints.down('xs')]: {
-            marginLeft: theme.spacing(4),
-        },
+  mainMessageContainer: {
+    marginTop: "20vh",
+    marginLeft: theme.spacing(20),
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: theme.spacing(4),
     },
-    paper: {
-        overflow: "hidden",
-    },
-    message: {
-        opacity: opacityValue,
-        maxWidth: 250,
-        paddingBottom: theme.spacing(2),
-    },
+  },
+  paper: {
+    overflow: "hidden",
+  },
+  message: {
+    opacity: opacityValue,
+    maxWidth: 250,
+    paddingBottom: theme.spacing(2),
+  },
 
 });
 
 function NavBar(props) {
-    const { history } = props;
-  
-    return (
-      <AppBar position="static">
-        <Toolbar>
-          <Link
-            color="inherit"
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push('/Home')}
-          >
-            <Button color="inherit">Home</Button>
-          </Link>
-          <Link
-            color="inherit"
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push('/NFL')}
-          >
-            <Button color="inherit">NFL</Button>
-          </Link>
-          <Link
-            color="inherit"
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push('/NBA')}
-          >
-            <Button color="inherit">NBA</Button>
-          </Link>
-          <Link
-            color="inherit"
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push('/EPL')}
-          >
-            <Button color="inherit">Premier League</Button>
-          </Link>
-          <Link
-                     color="inherit"
-                   style={{ cursor: "pointer" }}
-                   onClick={() => history.push('/Profile')}
-                                >
-                  <Button color="inherit">Profile</Button>
-                  </Link>
+  const { history } = props;
 
-                  <Button color="inherit">Log out</Button>
-                            </Toolbar>
-                        </AppBar>
-    );
-  }
-  
+  return (
+    <AppBar position="fixed">
+      <Toolbar>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/Home')}
+        >
+          <Button color="inherit">Home</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/NFL')}
+        >
+          <Button color="inherit">NFL</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/NBA')}
+        >
+          <Button color="inherit">NBA</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/EPL')}
+        >
+          <Button color="inherit">Premier League</Button>
+        </Link>
+        <Link
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/Profile')}
+        >
+          <Button color="inherit">Profile</Button>
+        </Link>
+
+        <Button color="inherit">Log out</Button>
+      </Toolbar>
+    </AppBar>
+  );
+}
+
 const numOfTries = 5;
 
-function GuessComponent( {correctAnswer} ) {
+function GuessComponent({ correctAnswer }) {
   const [inputValue, setInputValue] = useState("");
   const [displayValues, setDisplayValues] = useState([]);
   const [remainingGuesses, setRemainingGuesses] = useState(numOfTries);
@@ -160,7 +160,7 @@ function GuessComponent( {correctAnswer} ) {
   return (
     <div>
       <TextField
-      id="guess-input"
+        id="guess-input"
         label="Guess"
         variant="outlined"
         value={inputValue}
@@ -192,168 +192,168 @@ function GuessComponent( {correctAnswer} ) {
 }
 
 const Overundergame = () => {
-    const [selectedButton, setSelectedButton] = React.useState('');
-    const [message, setMessage] = React.useState('');
-    const [gameOver, setGameOver] = React.useState(false);
-  
-    const question = "Did Lebron James average 30pts a game in the NBA in 2021-22?";
-    const correctAnswer = "Over";
-  
-    const handleButtonClick = (event) => {
-        if (!gameOver) {
-          const selectedValue = event.currentTarget.value;
-          setSelectedButton(selectedValue);
-      
-          if (selectedValue === correctAnswer) {
-            setMessage("Correct!");
-          } else {
-            setMessage("Incorrect :(");
-          }
-          setGameOver(true);
-        }
-      };
-  
-    return (
-      <Grid
-        container
-        spacing={6}
-        direction="column"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-        style={{ minHeight: '100vh' }}
-      >
-        <Grid item>
-          <Typography variant="h1">
-            Over and Under Sports Game!
-          </Typography>
-        </Grid>
-  
-        <Grid item>
-          <Typography variant="body1">
-            {question}
-          </Typography>
-        </Grid>
-  
-        <Grid item>
-          <Button
-            variant="contained"
-            color="primary"
-            value="Over"
-            onClick={handleButtonClick}
-            disabled={gameOver}
-          >
-            Over
-          </Button>
-        </Grid>
-  
-        <Grid item>
-          <Button
-            variant="contained"
-            color="primary"
-            value="Under"
-            onClick={handleButtonClick}
-            disabled={gameOver}
-          >
-            Under
-          </Button>
-        </Grid>
-  
-        {gameOver && (
-          <Grid item>
-            <Typography variant="h4">
-              {message}
-            </Typography>
-          </Grid>
-        )}
-      </Grid>
-    )
+  const [selectedButton, setSelectedButton] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [gameOver, setGameOver] = React.useState(false);
+
+  const question = "Did Lebron James average 30pts a game in the NBA in 2021-22?";
+  const correctAnswer = "Over";
+
+  const handleButtonClick = (event) => {
+    if (!gameOver) {
+      const selectedValue = event.currentTarget.value;
+      setSelectedButton(selectedValue);
+
+      if (selectedValue === correctAnswer) {
+        setMessage("Correct!");
+      } else {
+        setMessage("Incorrect :(");
+      }
+      setGameOver(true);
+    }
   };
-  
-  
+
+  return (
+    <Grid
+      container
+      spacing={6}
+      direction="column"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      style={{ minHeight: '100vh' }}
+    >
+      <Grid item>
+        <Typography variant="h1">
+          Over and Under Sports Game!
+        </Typography>
+      </Grid>
+
+      <Grid item>
+        <Typography variant="body1">
+          {question}
+        </Typography>
+      </Grid>
+
+      <Grid item>
+        <Button
+          variant="contained"
+          color="primary"
+          value="Over"
+          onClick={handleButtonClick}
+          disabled={gameOver}
+        >
+          Over
+        </Button>
+      </Grid>
+
+      <Grid item>
+        <Button
+          variant="contained"
+          color="primary"
+          value="Under"
+          onClick={handleButtonClick}
+          disabled={gameOver}
+        >
+          Under
+        </Button>
+      </Grid>
+
+      {gameOver && (
+        <Grid item>
+          <Typography variant="h4">
+            {message}
+          </Typography>
+        </Grid>
+      )}
+    </Grid>
+  )
+};
+
+
 
 
 
 
 class Home extends Component {
-    
-    constructor(props) {
-      super(props);
-      this.state = {
-        userID: 1,
-        mode: 0,
-        }
-    };
 
-    render() {
-        const { classes } = this.props;
-        
-        const mainMessage = (
-            <Grid
-                container
-                spacing={0}
-                direction="column"
-                justify="flex-start"
-                alignItems="flex-start"
-                style={{ minHeight: '100vh' }}
-                className={classes.mainMessageContainer}
-            >
-
-                <Grid item>
-                    <div className={classes.root}>
-                    <NavBar history={this.props.history} />
-                    </div>
-
-                    <div>
-                    <Typography variant="h1">Guess The Player</Typography>
-                    <Box mt={2}>
-                    <Typography variant="body1">Who is the Golden State Warriors leading scorer this season?</Typography>
-                    </Box>
-                    </div>
-                    <div>
-                    <Box mt={2}>
-                    <GuessComponent correctAnswer={"Stephen Curry"}/>
-                    </Box>
-                    </div>
-
-                    <div>
-                    <Typography variant="h1">Guess The Team</Typography>
-                    <Box mt={2}>
-                    <Typography variant="body1">Who won the NBA Championship in 2021?</Typography>
-                    </Box>
-                    </div>
-                    <div>
-                    <Box mt={2}>
-                    <GuessComponent correctAnswer={"Milwaukee Bucks"}/>
-                    </Box>
-
-                    </div>
-
-                    <div>
-                    <Overundergame/>
-                    </div>
-
-                </Grid>
-            </Grid>
-        )
-
-        return (
-            <MuiThemeProvider theme={theme}>
-                <div className={classes.root}>
-                    <CssBaseline />
-                    <Paper
-                        className={classes.paper}
-                    >
-                        {mainMessage} 
-                    </Paper>
-
-                </div>
-            </MuiThemeProvider>
-        );
+  constructor(props) {
+    super(props);
+    this.state = {
+      userID: 1,
+      mode: 0,
     }
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    const mainMessage = (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        justify="flex-start"
+        alignItems="flex-start"
+        style={{ minHeight: '100vh' }}
+        className={classes.mainMessageContainer}
+      >
+
+        <Grid item>
+          <div className={classes.root}>
+            <NavBar history={this.props.history} />
+          </div>
+
+          <div>
+            <Typography variant="h1">Guess The Player</Typography>
+            <Box mt={2}>
+              <Typography variant="body1">Who is the Golden State Warriors leading scorer this season?</Typography>
+            </Box>
+          </div>
+          <div>
+            <Box mt={2}>
+              <GuessComponent correctAnswer={"Stephen Curry"} />
+            </Box>
+          </div>
+
+          <div>
+            <Typography variant="h1">Guess The Team</Typography>
+            <Box mt={2}>
+              <Typography variant="body1">Who won the NBA Championship in 2021?</Typography>
+            </Box>
+          </div>
+          <div>
+            <Box mt={2}>
+              <GuessComponent correctAnswer={"Milwaukee Bucks"} />
+            </Box>
+
+          </div>
+
+          <div>
+            <Overundergame />
+          </div>
+
+        </Grid>
+      </Grid>
+    )
+
+    return (
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <CssBaseline />
+          <Paper
+            className={classes.paper}
+          >
+            {mainMessage}
+          </Paper>
+
+        </div>
+      </MuiThemeProvider>
+    );
+  }
 }
 
 Home.propTypes = {
-    classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Home);
