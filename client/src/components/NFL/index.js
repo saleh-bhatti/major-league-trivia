@@ -40,47 +40,47 @@ const fetch = require("node-fetch");
 const opacityValue = 0.9;
 
 const theme = createTheme({
-    palette: {
-        type: 'light',
-        background: {
-            default: "#e33371"
-        },
-        primary: {
-            main: "#e33371",
-        },
-        secondary: {
-            main: "#e33371",
-        },
+  palette: {
+    type: 'light',
+    background: {
+      default: "#e33371"
     },
+    primary: {
+      main: "#e33371",
+    },
+    secondary: {
+      main: "#e33371",
+    },
+  },
 });
 
 const styles = theme => ({
-    root: {
-        body: {
-            backgroundColor: "#000000",
-            opacity: opacityValue,
-            overflow: "hidden",
-        },
+  root: {
+    body: {
+      backgroundColor: "#000000",
+      opacity: opacityValue,
+      overflow: "hidden",
     },
-    mainMessage: {
-        opacity: opacityValue,
-    },
+  },
+  mainMessage: {
+    opacity: opacityValue,
+  },
 
-    mainMessageContainer: {
-        marginTop: "20vh",
-        marginLeft: theme.spacing(20),
-        [theme.breakpoints.down('xs')]: {
-            marginLeft: theme.spacing(4),
-        },
+  mainMessageContainer: {
+    marginTop: "20vh",
+    marginLeft: theme.spacing(20),
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: theme.spacing(4),
     },
-    paper: {
-        overflow: "hidden",
-    },
-    message: {
-        opacity: opacityValue,
-        maxWidth: 250,
-        paddingBottom: theme.spacing(2),
-    },
+  },
+  paper: {
+    overflow: "hidden",
+  },
+  message: {
+    opacity: opacityValue,
+    maxWidth: 250,
+    paddingBottom: theme.spacing(2),
+  },
 
 });
 
@@ -88,7 +88,7 @@ function NavBar(props) {
   const { history } = props;
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <Link
           color="inherit"
@@ -119,22 +119,22 @@ function NavBar(props) {
           <Button color="inherit">Premier League</Button>
         </Link>
         <Link
-                   color="inherit"
-                 style={{ cursor: "pointer" }}
-                 onClick={() => history.push('/Profile')}
-                              >
-                <Button color="inherit">Profile</Button>
-                </Link>
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/Profile')}
+        >
+          <Button color="inherit">Profile</Button>
+        </Link>
 
-                <Button color="inherit">Log out</Button>
-                          </Toolbar>
-                      </AppBar>
+        <Button color="inherit">Log out</Button>
+      </Toolbar>
+    </AppBar>
   );
 }
 
 const numOfTries = 5;
 
-function GuessComponent( {correctAnswer} ) {
+function GuessComponent({ correctAnswer }) {
   const [inputValue, setInputValue] = useState("");
   const [displayValues, setDisplayValues] = useState([]);
   const [remainingGuesses, setRemainingGuesses] = useState(numOfTries);
@@ -199,18 +199,18 @@ const Overundergame = () => {
   const correctAnswer = "Over";
 
   const handleButtonClick = (event) => {
-      if (!gameOver) {
-        const selectedValue = event.currentTarget.value;
-        setSelectedButton(selectedValue);
-    
-        if (selectedValue === correctAnswer) {
-          setMessage("Correct!");
-        } else {
-          setMessage("Incorrect :(");
-        }
-        setGameOver(true);
+    if (!gameOver) {
+      const selectedValue = event.currentTarget.value;
+      setSelectedButton(selectedValue);
+
+      if (selectedValue === correctAnswer) {
+        setMessage("Correct!");
+      } else {
+        setMessage("Incorrect :(");
       }
-    };
+      setGameOver(true);
+    }
+  };
 
   return (
     <Grid
@@ -269,84 +269,84 @@ const Overundergame = () => {
 };
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userID: 1,
-            mode: 0
-        }
-    };
-
-    render() {
-        const { classes } = this.props;
-        
-        const mainMessage = (
-            <Grid
-                container
-                spacing={0}
-                direction="column"
-                justify="flex-start"
-                alignItems="flex-start"
-                style={{ minHeight: '100vh' }}
-                className={classes.mainMessageContainer}
-            >
-
-                <Grid item>
-                    <div className={classes.root}>
-                    <NavBar history={this.props.history} />  
-                    </div>
-
-                    <div>
-                    <Typography variant="h1">Guess The Player</Typography>
-                    <Box mt={2}>
-                    <Typography variant="body1">Who is the current reigning MVP?</Typography>
-                    </Box>
-                    </div>
-                    <div>
-                    <Box mt={2}>
-                    <GuessComponent correctAnswer={"Patrick Mahomes"}/>
-                    </Box>
-                    </div>
-
-                    <div>
-                    <Typography variant="h1">Guess The Team</Typography>
-                    <Box mt={2}>
-                    <Typography variant="body1">Who are the current SuperBowl holders?</Typography>
-                    </Box>
-                    </div>
-                    <div>
-                    <Box mt={2}>
-                    <GuessComponent correctAnswer={"Kansas City Chiefs"}/>
-                    </Box>
-                    </div>
-                    <div>
-                        <Overundergame/>
-                    </div>
-
-                </Grid>
-            </Grid>
-        )
-
-
-
-        return (
-            <MuiThemeProvider theme={theme}>
-                <div className={classes.root}>
-                    <CssBaseline />
-                    <Paper
-                        className={classes.paper}
-                    >
-                        {mainMessage}
-                    </Paper>
-
-                </div>
-            </MuiThemeProvider>
-        );
+  constructor(props) {
+    super(props);
+    this.state = {
+      userID: 1,
+      mode: 0
     }
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    const mainMessage = (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        justify="flex-start"
+        alignItems="flex-start"
+        style={{ minHeight: '100vh' }}
+        className={classes.mainMessageContainer}
+      >
+
+        <Grid item>
+          <div className={classes.root}>
+            <NavBar history={this.props.history} />
+          </div>
+
+          <div>
+            <Typography variant="h1">Guess The Player</Typography>
+            <Box mt={2}>
+              <Typography variant="body1">Who is the current reigning MVP?</Typography>
+            </Box>
+          </div>
+          <div>
+            <Box mt={2}>
+              <GuessComponent correctAnswer={"Patrick Mahomes"} />
+            </Box>
+          </div>
+
+          <div>
+            <Typography variant="h1">Guess The Team</Typography>
+            <Box mt={2}>
+              <Typography variant="body1">Who are the current SuperBowl holders?</Typography>
+            </Box>
+          </div>
+          <div>
+            <Box mt={2}>
+              <GuessComponent correctAnswer={"Kansas City Chiefs"} />
+            </Box>
+          </div>
+          <div>
+            <Overundergame />
+          </div>
+
+        </Grid>
+      </Grid>
+    )
+
+
+
+    return (
+      <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <CssBaseline />
+          <Paper
+            className={classes.paper}
+          >
+            {mainMessage}
+          </Paper>
+
+        </div>
+      </MuiThemeProvider>
+    );
+  }
 }
 
 Home.propTypes = {
-    classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Home);

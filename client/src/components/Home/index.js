@@ -85,14 +85,18 @@ function NavBar(props) {
   const { history } = props;
 
   return (
-    <AppBar position="static">
+
+
+    <AppBar position="fixed">
+
       <Toolbar>
+
         <Link
           color="inherit"
           style={{ cursor: "pointer" }}
           onClick={() => history.push('/Home')}
         >
-          <Button color="inherit">Home</Button>
+          <Button color="inherit">VASA SPORTS</Button>
         </Link>
         <Link
           color="inherit"
@@ -116,16 +120,16 @@ function NavBar(props) {
           <Button color="inherit">Premier League</Button>
         </Link>
         <Link
-                   color="inherit"
-                 style={{ cursor: "pointer" }}
-                 onClick={() => history.push('/Profile')}
-                              >
-                <Button color="inherit">Profile</Button>
-                </Link>
+          color="inherit"
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push('/Profile')}
+        >
+          <Button color="inherit">Profile</Button>
+        </Link>
 
-                <Button color="inherit">Log out</Button>
-                          </Toolbar>
-                      </AppBar>
+        <Button color="inherit">Log out</Button>
+      </Toolbar>
+    </AppBar>
   );
 }
 
@@ -135,17 +139,17 @@ class Home extends Component {
     this.state = {
       userID: 1,
       mode: 0,
-      
+
     }
   };
-  
+
 
   componentDidMount() {
     this.loadUserSettings();
   }
 
 
-  
+
   componentDidMount() {
     //this.loadUserSettings();
   }
@@ -182,7 +186,7 @@ class Home extends Component {
 
   render() {
     const { classes } = this.props;
-  
+
     const mainMessage = (
       <Grid
         container
@@ -194,16 +198,16 @@ class Home extends Component {
         className={classes.mainMessageContainer}
       >
 
-        <Grid item>
+        <Grid item align="center">
           <div className={classes.root}>
-          <NavBar history={this.props.history} />
+            <NavBar history={this.props.history} />
           </div>
 
 
           <Typography
             variant={"h1"}
             className={classes.mainMessage}
-            align="flex-start"
+            align="center"
           >
             {this.state.mode === 0 ? (
               <React.Fragment>
@@ -214,10 +218,24 @@ class Home extends Component {
 
               </React.Fragment>
             ) : (
-                <React.Fragment>
-                  Welcome back!
-                </React.Fragment>
-              )}
+              <React.Fragment>
+                Welcome back!
+              </React.Fragment>
+            )}
+          </Typography>
+          <Grid align="center">
+            <iframe width="800" height="500" align="center"
+              src="https://www.youtube.com/embed/8y9QnS_tMkY" allowfullscreen></iframe>
+          </Grid>
+
+          <Typography>
+            Placeholder for our own intro vid
+
+          </Typography>
+
+          <Typography variant="h3">
+            The daily dose of sports news and trivia that you need! We hope you enjoy :)
+
           </Typography>
 
         </Grid>
