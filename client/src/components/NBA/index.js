@@ -23,7 +23,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-
+import NBAGuessTheTeam from '../GuessTheTeamGames/NBAGuessTheTeam';
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -317,13 +317,11 @@ class Home extends Component {
 
           <div>
             <Typography variant="h1">Guess The Team</Typography>
-            <Box mt={2}>
-              <Typography variant="body1">Who won the NBA Championship in 2021?</Typography>
-            </Box>
+            
           </div>
           <div>
             <Box mt={2}>
-              <GuessComponent correctAnswer={"Milwaukee Bucks"} />
+            <NBAGuessTheTeam correctAnswer={"Toronto Raptors"} />
             </Box>
 
           </div>
