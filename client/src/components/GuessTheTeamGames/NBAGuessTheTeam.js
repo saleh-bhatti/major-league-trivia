@@ -2,24 +2,32 @@ import React, { useState } from "react";
 import NBATeams from "../TeamLists/NBATeams";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+
+
+
+
 
 const NBATeamDropdown = ({ handleNBATeamSelection, gameOver }) => {
   return (
-    <div>
-      <label htmlFor="nba-team-dropdown">Select an NBA team:</label>
-      <select
+    <FormControl fullWidth>
+      <InputLabel id="nba-team-dropdown-label">Select an NBA team:</InputLabel>
+      <Select
+        labelId="nba-team-dropdown-label"
         id="nba-team-dropdown"
+        value=""
         onChange={handleNBATeamSelection}
         disabled={gameOver}
       >
         <option value="">--Select an NBA team--</option>
-        {NBATeams.map((team) => (
-          <option key={team} value={team}>
-            {team}
-          </option>
+        {NBATeams.map((team) => (<MenuItem key={team} value={team}> {team} </MenuItem>
         ))}
-      </select>
-    </div>
+
+      </Select>
+    </FormControl>
   );
 };
 
@@ -59,7 +67,9 @@ const NBAGuessTheTeam = ({ correctAnswer }) => {
         color="primary"
         size="large"
         disabled={remainingGuesses === 0 || gameOver}
-      />
+      >
+        Guess!
+      </Button>
       <div>
         {displayGuesses.map((guess, index) => (
           <div key={index}>{guess}</div>

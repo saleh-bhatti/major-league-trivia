@@ -89,13 +89,16 @@ function NavBar(props) {
     <AppBar position="fixed">
 
       <Toolbar>
+        <Typography variant="h5">
+          VASA SPORTS
+        </Typography>
 
         <Link
           color="inherit"
           style={{ cursor: "pointer" }}
           onClick={() => history.push("/Home")}
         >
-          <Button color="inherit">VASA SPORTS</Button>
+          <Button color="inherit"> Home </Button>
         </Link>
         <Link
           color="inherit"
