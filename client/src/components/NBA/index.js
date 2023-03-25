@@ -197,9 +197,9 @@ const Overundergame = () => {
   const [gameOver, setGameOver] = React.useState(false);
 
   const [questions, setQuestions] = React.useState([
-    { question: "Did Lebron James average 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
-    { question: "Did Stephen Curry average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
-    { question: "Did Chris Paul average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Lebron James average over or under 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Stephen Curry average over or under 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Chris Paul average over or under 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
   ]);
   const [currentQuestion, setCurrentQuestion] = React.useState(0)
 
