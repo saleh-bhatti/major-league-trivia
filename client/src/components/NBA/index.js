@@ -321,14 +321,12 @@ class Home extends Component {
           </div>
 
           <div>
-            <Typography variant="h1">Guess The Team</Typography>
-            <Box mt={2}>
-              <Typography variant="body1">Who won the NBA Championship in 2021?</Typography>
-            </Box>
+            <Typography variant="h1" align="center">Guess The Team</Typography>
+
           </div>
           <div>
-            <Box mt={2}>
-              <GuessComponent correctAnswer={"Milwaukee Bucks"} />
+            <Box mt={2} align="center">
+              <NBAGuessTheTeam correctAnswer={"Toronto Raptors"} />
             </Box>
 
           </div>
