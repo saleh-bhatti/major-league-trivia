@@ -20,10 +20,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Router, Switch, Route } from "react-router-dom";
 import history from '../Navigation/history';
 import TextField from "@material-ui/core/TextField";
-import NBAGuessTheTeam from '../GuessTheTeamGames/NBAGuessTheTeam';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import NBAGuessTheTeam from '../GuessTheTeamGames/NBAGuessTheTeam';
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -196,39 +196,22 @@ const Overundergame = () => {
   const [message, setMessage] = React.useState('');
   const [gameOver, setGameOver] = React.useState(false);
 
-
-  const [questions, setQuestions] = React.useState([
-    { question: "Did Lebron James average 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
-    { question: "Did Stephen Curry average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
-    { question: "Did Chris Paul average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
-  ]);
-  const [currentQuestion, setCurrentQuestion] = React.useState(0)
-
+  const question = "Did Lebron James average 30pts a game in the NBA in 2021-22?";
+  const correctAnswer = "Over";
 
   const handleButtonClick = (event) => {
     if (!gameOver) {
       const selectedValue = event.currentTarget.value;
       setSelectedButton(selectedValue);
 
-
-    if (selectedValue === questions[currentQuestion].correctAnswer) {
-      setMessage("Correct!");
-    } else {
-      setMessage("Incorrect :(");
-    }
-    setGameOver(true);
-
-    setTimeout(() => {
-      if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-        setSelectedButton('');
-        setMessage('');
-        setGameOver(false);
+      if (selectedValue === correctAnswer) {
+        setMessage("Correct!");
+      } else {
+        setMessage("Incorrect :(");
       }
-    }, 2000);
+      setGameOver(true);
+    }
   };
-
-
 
   return (
     <Grid
@@ -285,6 +268,9 @@ const Overundergame = () => {
     </Grid>
   )
 };
+
+
+
 
 
 

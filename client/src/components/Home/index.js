@@ -20,8 +20,7 @@ import { Router, Switch, Route } from "react-router-dom";
 import history from "../Navigation/history";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
+import Select from "@material-ui/core/Select";
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -134,8 +133,6 @@ function NavBar(props) {
         <Button color="inherit">Log out</Button>
       </Toolbar>
     </AppBar>
-
-
   );
 }
 
@@ -199,41 +196,41 @@ class Home extends Component {
         className={classes.mainMessageContainer}
       >
 
-        <div className={classes.root}>
-          <NavBar history={this.props.history} />
-        </div>
+        <Grid item align="center">
 
-        <Typography
-          variant={"h1"}
-          className={classes.mainMessage}
-          align="center"
-        >
-          {this.state.mode === 0 ? (
-            <React.Fragment>Welcome to VASA Sports!</React.Fragment>
-          ) : (
+          <div className={classes.root}>
+            <NavBar history={this.props.history} />
+          </div>
 
-            <React.Fragment>
-              Welcome back!
-            </React.Fragment>
-          )}
+          <Typography
+            variant={"h1"}
+            className={classes.mainMessage}
+            align="center"
+          >
+            {this.state.mode === 0 ? (
+              <React.Fragment>Welcome to VASA Sports!</React.Fragment>
+            ) : (
 
+              <React.Fragment>
+                Welcome back!
+              </React.Fragment>
+            )}
+          </Typography>
+          <Grid align="center">
+            <iframe width="800" height="500" align="center"
+              src="https://www.youtube.com/embed/8y9QnS_tMkY" allowfullscreen></iframe>
+          </Grid>
 
-        </Typography>
-        <Grid align="center">
-          <iframe width="800" height="500" align="center"
-            src="https://www.youtube.com/embed/8y9QnS_tMkY" allowfullscreen></iframe>
+          <Typography>
+            Placeholder for our own intro vid
+
+          </Typography>
+
+          <Typography variant="h3">
+            The daily dose of sports news and trivia that you need! We hope you enjoy :)
+
+          </Typography>
         </Grid>
-
-
-
-        <Typography>
-          Placeholder for our own intro vid
-
-        </Typography>
-        <Typography variant="h3">
-          The daily dose of sports news and trivia that you need! We hope you enjoy :)
-
-        </Typography>
       </Grid>
     );
 
