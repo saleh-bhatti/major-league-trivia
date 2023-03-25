@@ -197,12 +197,33 @@ const Overundergame = () => {
   const [gameOver, setGameOver] = React.useState(false);
 
   const [questions, setQuestions] = React.useState([
-    { question: "Did Lebron James average over or under 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
-    { question: "Did Stephen Curry average over or under 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
-    { question: "Did Chris Paul average over or under 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
-    { question: "Did test1 average over or under 9pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
-    { question: "Did test2 average over or under 14pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
-    { question: "Did test3 average over or under 16pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Lebron James average 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Stephen Curry average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Joel Embiid average 31pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Trae Young average 28pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Demar DeRozan average 20pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Miles Bridges average 22pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Andrew Wiggins average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Desmond Bane average 18pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did RJ Barrett average 21pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Kyle Kuzma average 15pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Caris LeVert average 15 pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Reggie Jackson average 25pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Kevin Durant average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Harrison Barnes average 16 pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Evan Mobley average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Bobby Portis average 19pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Mike Conley average 25pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Seth Curry average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Rudy Gobert average 25pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did LaMelo Ball average 15pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Devin Booker average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Donnovan Mitchell average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Jalen Brunson average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Evan Fournier average 15pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Draymond Green average 12pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did Klay Thompson average 20pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Jordan Poole average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
   ]);
 
   React.useEffect(() => {
@@ -210,13 +231,15 @@ const Overundergame = () => {
   }, []);
 
   const [currentQuestion, setCurrentQuestion] = React.useState(Math.floor(Math.random() * questions.length));
+  const [score, setScore] = React.useState(0)
 
   const handleButtonClick = (event) => {
     const selectedValue = event.currentTarget.value;
-    setSelectedButton(selectedValue);
+    // setSelectedButton(selectedValue);
 
     if (selectedValue === questions[currentQuestion].correctAnswer) {
       setMessage("Correct!");
+      setScore(score + 1)
     } else {
       setMessage("Incorrect :(");
     }
@@ -229,7 +252,7 @@ const Overundergame = () => {
         setMessage('');
         setGameOver(false);
       }
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -276,6 +299,11 @@ const Overundergame = () => {
           Under
         </Button>
       </Grid>
+      <Grid item>
+         <Typography variant="h4">
+           Score: {score}
+         </Typography>
+       </Grid>
 
       {gameOver && (
         <Grid item>
