@@ -200,8 +200,16 @@ const Overundergame = () => {
     { question: "Did Lebron James average over or under 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
     { question: "Did Stephen Curry average over or under 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
     { question: "Did Chris Paul average over or under 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did test1 average over or under 9pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did test2 average over or under 14pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+    { question: "Did test3 average over or under 16pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
   ]);
-  const [currentQuestion, setCurrentQuestion] = React.useState(0)
+
+  React.useEffect(() => {
+    setQuestions(questions.sort(() => Math.random() - 0.5)); 
+  }, []);
+
+  const [currentQuestion, setCurrentQuestion] = React.useState(Math.floor(Math.random() * questions.length));
 
   const handleButtonClick = (event) => {
     const selectedValue = event.currentTarget.value;
