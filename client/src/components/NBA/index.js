@@ -196,21 +196,32 @@ const Overundergame = () => {
   const [message, setMessage] = React.useState('');
   const [gameOver, setGameOver] = React.useState(false);
 
-  const question = "Did Lebron James average 30pts a game in the NBA in 2021-22?";
-  const correctAnswer = "Over";
+  const [questions, setQuestions] = React.useState([
+    { question: "Did Lebron James average 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Stephen Curry average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Chris Paul average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
+  ]);
+  const [currentQuestion, setCurrentQuestion] = React.useState(0)
 
   const handleButtonClick = (event) => {
-    if (!gameOver) {
-      const selectedValue = event.currentTarget.value;
-      setSelectedButton(selectedValue);
+    const selectedValue = event.currentTarget.value;
+    setSelectedButton(selectedValue);
 
-      if (selectedValue === correctAnswer) {
-        setMessage("Correct!");
-      } else {
-        setMessage("Incorrect :(");
-      }
-      setGameOver(true);
+    if (selectedValue === questions[currentQuestion].correctAnswer) {
+      setMessage("Correct!");
+    } else {
+      setMessage("Incorrect :(");
     }
+    setGameOver(true);
+
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        setSelectedButton('');
+        setMessage('');
+        setGameOver(false);
+      }
+    }, 2000);
   };
 
   return (
@@ -230,7 +241,7 @@ const Overundergame = () => {
 
       <Grid item>
         <Typography variant="body1">
-          {question}
+          {questions[currentQuestion].question}
         </Typography>
       </Grid>
 
