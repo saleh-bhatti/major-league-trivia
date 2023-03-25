@@ -15,6 +15,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 import TextField from "@material-ui/core/TextField";
+import NBAGuessTheTeam from '../GuessTheTeamGames/NBAGuessTheTeam';
 
 
 //Dev mode
@@ -188,10 +189,10 @@ const Overundergame = () => {
   const [message, setMessage] = React.useState('');
   const [gameOver, setGameOver] = React.useState(false);
 
-  const [questions,setQuestions] = React.useState([
-    { question: "Did Lebron James average 30pts a game in the NBA in 2021-22?", correctAnswer: "Over"},
-    { question: "Did Stephen Curry average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over"},
-    { question: "Did Chris Paul average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under"},
+  const [questions, setQuestions] = React.useState([
+    { question: "Did Lebron James average 30pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Stephen Curry average 25pts a game in the NBA in 2021-22?", correctAnswer: "Over" },
+    { question: "Did Chris Paul average 20pts a game in the NBA in 2021-22?", correctAnswer: "Under" },
   ]);
   const [currentQuestion, setCurrentQuestion] = React.useState(0)
 
@@ -200,22 +201,22 @@ const Overundergame = () => {
     setSelectedButton(selectedValue);
 
     if (selectedValue === questions[currentQuestion].correctAnswer) {
-        setMessage("Correct!");
-      } else {
-        setMessage("Incorrect :(");
-      }
-      setGameOver(true);
+      setMessage("Correct!");
+    } else {
+      setMessage("Incorrect :(");
+    }
+    setGameOver(true);
 
-      setTimeout(() => {
-        if (currentQuestion < questions.length - 1) {
-          setCurrentQuestion(currentQuestion + 1);
-          setSelectedButton('');
-          setMessage('');
-          setGameOver(false);
-        }
-      }, 2000); 
-    };
-    
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        setSelectedButton('');
+        setMessage('');
+        setGameOver(false);
+      }
+    }, 2000);
+  };
+
 
 
   return (
