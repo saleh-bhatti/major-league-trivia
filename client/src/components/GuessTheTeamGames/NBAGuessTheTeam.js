@@ -6,6 +6,8 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 
 
@@ -55,38 +57,40 @@ const NBAGuessTheTeam = ({ correctAnswer }) => {
   };
 
   return (
-    <div>
-      <NBATeamDropdown
-        handleNBATeamSelection={handleNBATeamSelection}
-        gameOver={gameOver}
-      />
-      <Button
-        onClick={handleGuess}
-        value="Guess"
-        variant="contained"
-        color="primary"
-        size="large"
-        disabled={remainingGuesses === 0 || gameOver}
-      >
-        Guess!
-      </Button>
-      <div>
-        {displayGuesses.map((guess, index) => (
-          <div key={index}>{guess}</div>
-        ))}
-      </div>
-      {remainingGuesses === 0 && <div>Out of guesses!</div>}
-      {gameOver && (
+    <Card variant="outlined">
+      <CardContent>
+        <NBATeamDropdown
+          handleNBATeamSelection={handleNBATeamSelection}
+          gameOver={gameOver}
+        />
+        <Button
+          onClick={handleGuess}
+          value="Guess"
+          variant="contained"
+          color="primary"
+          size="large"
+          disabled={remainingGuesses === 0 || gameOver}
+        >
+          Guess!
+        </Button>
         <div>
-          <Typography>
-            You guessed correctly in {numOfTriesUsed} tries!
-          </Typography>
+          {displayGuesses.map((guess, index) => (
+            <div key={index}>{guess}</div>
+          ))}
         </div>
-      )}
-      {!gameOver && remainingGuesses > 0 && (
-        <div>{`Remaining guesses: ${remainingGuesses}`}</div>
-      )}
-    </div>
+        {remainingGuesses === 0 && <div>Out of guesses!</div>}
+        {gameOver && (
+          <div>
+            <Typography>
+              You guessed correctly in {numOfTriesUsed} tries!
+            </Typography>
+          </div>
+        )}
+        {!gameOver && remainingGuesses > 0 && (
+          <div>{`Remaining guesses: ${remainingGuesses}`}</div>
+        )}
+      </CardContent>
+    </Card>
   );
 };
 
