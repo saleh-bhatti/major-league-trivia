@@ -24,6 +24,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import NBAGuessTheTeam from '../GuessTheTeamGames/NBAGuessTheTeam';
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -227,7 +229,7 @@ const Overundergame = () => {
   ]);
 
   React.useEffect(() => {
-    setQuestions(questions.sort(() => Math.random() - 0.5)); 
+    setQuestions(questions.sort(() => Math.random() - 0.5));
   }, []);
 
   const [currentQuestion, setCurrentQuestion] = React.useState(Math.floor(Math.random() * questions.length));
@@ -256,63 +258,70 @@ const Overundergame = () => {
   };
 
   return (
-    <Grid
-      container
-      spacing={6}
-      direction="column"
-      justifyContent="flex-start"
-      alignItems="flex-start"
-      style={{ minHeight: '100vh' }}
-    >
-      <Grid item>
-        <Typography variant="h1">
-          Over and Under Sports Game!
-        </Typography>
-      </Grid>
-
-      <Grid item>
-        <Typography variant="body1">
-          {questions[currentQuestion].question}
-        </Typography>
-      </Grid>
-
-      <Grid item>
-        <Button
-          variant="contained"
-          color="primary"
-          value="Over"
-          onClick={handleButtonClick}
-          disabled={gameOver}
+    <Card style={{ maxHeight: '40vh' }}>
+      <CardContent>
+        <Grid
+          container
+          spacing={6}
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="center"
+          style={{ minHeight: '100vh' }}
         >
-          Over
-        </Button>
-      </Grid>
+          <Grid item align='center'>
+            <Typography variant="h1">
+              Over and Under Sports Game!
+            </Typography>
+          </Grid>
 
-      <Grid item>
-        <Button
-          variant="contained"
-          color="primary"
-          value="Under"
-          onClick={handleButtonClick}
-          disabled={gameOver}
-        >
-          Under
-        </Button>
-      </Grid>
-      <Grid item>
-         <Typography variant="h4">
-           Score: {score}
-         </Typography>
-       </Grid>
+          <Grid item>
+            <Typography variant="h3">
+              {questions[currentQuestion].question}
+            </Typography>
+          </Grid>
 
-      {gameOver && (
-        <Grid item>
-          <Typography variant="h4">
-            {message}
-          </Typography>
+          <Grid item align='center'>
+            <Button
+              align='center'
+              variant="contained"
+              color="primary"
+              value="Over"
+              onClick={handleButtonClick}
+              disabled={gameOver}
+            >
+              Over
+            </Button>
+          </Grid>
+
+          <Grid item>
+            <Button
+              align='center;'
+              variant="contained"
+              color="primary"
+              value="Under"
+              onClick={handleButtonClick}
+              disabled={gameOver}
+            >
+              Under
+            </Button>
+          </Grid>
+          <Grid item>
+            <Typography variant="h4">
+              Score: {score}
+            </Typography>
+          </Grid>
+
+          {gameOver && (
+            <Grid item>
+              <Typography variant="h4">
+                {message}
+              </Typography>
+            </Grid>
+          )}
         </Grid>
-      )}
-    </Grid>
+      </CardContent >
+    </Card>
+
   )
 };
 
