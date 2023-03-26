@@ -1,37 +1,37 @@
-import React, { Component, useState } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import React, { Component, useState } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles } from '@material-ui/core/styles';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles } from "@material-ui/core/styles";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Link from "@material-ui/core/Link";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 import { Router, Switch, Route } from "react-router-dom";
-import history from '../Navigation/history';
+import history from "../Navigation/history";
 import TextField from "@material-ui/core/TextField";
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-
-
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import EPLGuessTheTeam from "../GuessTheTeamGames/EPLGuessTheTeam";
+import EPLGuessThePlayer from "../GuessThePlayerGames/EPLGuessThePlayer";
 //Dev mode
 const serverURL = ""; //enable for dev mode
 
 //Deployment mode instructions
 //const serverURL = "http://ov-research-4.uwaterloo.ca:PORT"; //enable for deployed mode; Change PORT to the port number given to you;
-//To find your port number: 
-//ssh to ov-research-4.uwaterloo.ca and run the following command: 
+//To find your port number:
+//ssh to ov-research-4.uwaterloo.ca and run the following command:
 //env | grep "PORT"
 //copy the number only and paste it in the serverURL in place of PORT, e.g.: const serverURL = "http://ov-research-4.uwaterloo.ca:3000";
 
@@ -41,9 +41,9 @@ const opacityValue = 0.9;
 
 const theme = createTheme({
   palette: {
-    type: 'light',
+    type: "light",
     background: {
-      default: "#e33371"
+      default: "#e33371",
     },
     primary: {
       main: "#e33371",
@@ -54,7 +54,7 @@ const theme = createTheme({
   },
 });
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     body: {
       backgroundColor: "#000000",
@@ -69,7 +69,7 @@ const styles = theme => ({
   mainMessageContainer: {
     marginTop: "20vh",
     marginLeft: theme.spacing(20),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       marginLeft: theme.spacing(4),
     },
   },
@@ -81,7 +81,6 @@ const styles = theme => ({
     maxWidth: 250,
     paddingBottom: theme.spacing(2),
   },
-
 });
 
 function NavBar(props) {
@@ -132,84 +131,156 @@ function NavBar(props) {
   );
 }
 
-const numOfTries = 5;
-
-function GuessComponent({ correctAnswer }) {
-  const [inputValue, setInputValue] = useState("");
-  const [displayValues, setDisplayValues] = useState([]);
-  const [remainingGuesses, setRemainingGuesses] = useState(numOfTries);
-  const [gameOver, setGameOver] = useState(false);
-  const [numOfTriesUsed, setNumOfTriesUsed] = useState(0);
-
-  const handleSubmit = () => {
-    setDisplayValues([...displayValues, inputValue]);
-    setInputValue("");
-    setRemainingGuesses(remainingGuesses - 1);
-    setNumOfTriesUsed(numOfTries - remainingGuesses + 1);
-    if (inputValue === correctAnswer) {
-      setGameOver(true);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSubmit();
-    }
-  };
-
-  return (
-    <div>
-      <TextField
-        label="Guess"
-        variant="outlined"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            handleSubmit();
-            setInputValue("");
-          }
-        }}
-        disabled={remainingGuesses === 0 || gameOver}
-      />
-      <div>
-        {displayValues.map((guess, index) => (
-          <div key={index}>{guess}</div>
-        ))}
-      </div>
-      {remainingGuesses === 0 && <div>Out of guesses!</div>}
-      {gameOver && (
-        <div>
-          <Typography>You guessed correctly in {numOfTries - remainingGuesses} tries!</Typography>
-        </div>
-      )}
-      {!gameOver && remainingGuesses > 0 && (
-        <div>{`Remaining guesses: ${remainingGuesses}`}</div>
-      )}
-    </div>
-  );
-}
-
 const Overundergame = () => {
-  const [selectedButton, setSelectedButton] = React.useState('');
-  const [message, setMessage] = React.useState('');
+  const [selectedButton, setSelectedButton] = React.useState("");
+  const [message, setMessage] = React.useState("");
   const [gameOver, setGameOver] = React.useState(false);
 
-  const question = "Did Mohamed Salah score more than 25 Premier League goals in 2021-22?";
-  const correctAnswer = "Under";
+  const [questions, setQuestions] = React.useState([
+    {
+      question: "Did Lebron James average 30pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Stephen Curry average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Joel Embiid average 31pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Trae Young average 28pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Demar DeRozan average 20pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Miles Bridges average 22pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question:
+        "Did Andrew Wiggins average 20pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Desmond Bane average 18pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did RJ Barrett average 21pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Kyle Kuzma average 15pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Caris LeVert average 15 pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question:
+        "Did Reggie Jackson average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Kevin Durant average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question:
+        "Did Harrison Barnes average 16 pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Evan Mobley average 20pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Bobby Portis average 19pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Mike Conley average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Seth Curry average 20pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Rudy Gobert average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did LaMelo Ball average 15pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Devin Booker average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question:
+        "Did Donnovan Mitchell average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Jalen Brunson average 25pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Evan Fournier average 15pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question:
+        "Did Draymond Green average 12pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+    {
+      question: "Did Klay Thompson average 20pts a game in the EPL in 2021-22?",
+      correctAnswer: "Over",
+    },
+    {
+      question: "Did Jordan Poole average 20pts a game in the EPL in 2021-22?",
+      correctAnswer: "Under",
+    },
+  ]);
+
+  React.useEffect(() => {
+    setQuestions(questions.sort(() => Math.random() - 0.5));
+  }, []);
+
+  const [currentQuestion, setCurrentQuestion] = React.useState(
+    Math.floor(Math.random() * questions.length)
+  );
+  const [score, setScore] = React.useState(0);
 
   const handleButtonClick = (event) => {
-    if (!gameOver) {
-      const selectedValue = event.currentTarget.value;
-      setSelectedButton(selectedValue);
+    const selectedValue = event.currentTarget.value;
+    // setSelectedButton(selectedValue);
 
-      if (selectedValue === correctAnswer) {
-        setMessage("Correct!");
-      } else {
-        setMessage("Incorrect :(");
-      }
-      setGameOver(true);
+    if (selectedValue === questions[currentQuestion].correctAnswer) {
+      setMessage("Correct!");
+      setScore(score + 1);
+    } else {
+      setMessage("Incorrect :(");
     }
+    setGameOver(true);
+
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        setSelectedButton("");
+        setMessage("");
+        setGameOver(false);
+      }
+    }, 1000);
   };
 
   return (
@@ -219,17 +290,15 @@ const Overundergame = () => {
       direction="column"
       justifyContent="flex-start"
       alignItems="flex-start"
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: "100vh" }}
     >
       <Grid item>
-        <Typography variant="h1">
-          Over and Under Sports Game!
-        </Typography>
+        <Typography variant="h1">Over and Under Sports Game!</Typography>
       </Grid>
 
       <Grid item>
         <Typography variant="body1">
-          {question}
+          {questions[currentQuestion].question}
         </Typography>
       </Grid>
 
@@ -256,16 +325,17 @@ const Overundergame = () => {
           Under
         </Button>
       </Grid>
+      <Grid item>
+        <Typography variant="h4">Score: {score}</Typography>
+      </Grid>
 
       {gameOver && (
         <Grid item>
-          <Typography variant="h4">
-            {message}
-          </Typography>
+          <Typography variant="h4">{message}</Typography>
         </Grid>
       )}
     </Grid>
-  )
+  );
 };
 
 class Home extends Component {
@@ -273,9 +343,9 @@ class Home extends Component {
     super(props);
     this.state = {
       userID: 1,
-      mode: 0
-    }
-  };
+      mode: 0,
+    };
+  }
 
   render() {
     const { classes } = this.props;
@@ -286,59 +356,38 @@ class Home extends Component {
         spacing={0}
         direction="column"
         justify="flex-start"
-        alignItems="flex-start"
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: "100vh" }}
         className={classes.mainMessageContainer}
       >
-
         <Grid item>
           <div className={classes.root}>
             <NavBar history={this.props.history} />
           </div>
 
           <div>
-            <Typography variant="h1">Guess The Player</Typography>
-            <Box mt={2}>
-              <Typography variant="body1">Who is the top scorer in the 2022-23 Premier League season?</Typography>
-            </Box>
-          </div>
-          <div>
-            <Box mt={2}>
-              <GuessComponent correctAnswer={"Erling Haaland"} />
+            <Box mt={1} textAlign="left">
+              <EPLGuessThePlayer/>
             </Box>
           </div>
 
           <div>
-            <Typography variant="h1">Guess The Team</Typography>
-            <Box mt={2}>
-              <Typography variant="body1">Who is the current Premier League champion?</Typography>
+            <Box mt={8} textAlign="left">
+              <EPLGuessTheTeam correctAnswer={"Toronto Raptors"} />
             </Box>
           </div>
-          <div>
-            <Box mt={2}>
-              <GuessComponent correctAnswer={"Manchester City"} />
-            </Box>
-          </div>
+
           <div>
             <Overundergame />
           </div>
-
         </Grid>
       </Grid>
-    )
-
-
+    );
 
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <Paper
-            className={classes.paper}
-          >
-            {mainMessage}
-          </Paper>
-
+          <Paper className={classes.paper}>{mainMessage}</Paper>
         </div>
       </MuiThemeProvider>
     );
@@ -346,7 +395,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Home);

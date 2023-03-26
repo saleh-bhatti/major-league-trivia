@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NBAPlayers from "../PlayerLists/NBAPlayers";
+import EPLPlayers from "../PlayerLists/EPLPlayers";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
@@ -9,7 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
-import NBAPlayerQuestions from "../GuessThePlayerQuestions/NBAPlayerQuestions";
+import EPLPlayerQuestions from "../GuessThePlayerQuestions/EPLPlayerQuestions";
 import { useEffect } from "react";
 
 const useStyles = makeStyles({
@@ -34,27 +34,27 @@ const useStyles = makeStyles({
   },
 });
 
-const NBAPlayerDropdown = ({
-  handleNBAPlayerSelection,
+const EPLPlayerDropdown = ({
+  handleEPLPlayerSelection,
   selectedPlayer,
   gameOver,
   classes,
 }) => {
   return (
     <FormControl fullWidth className={classes.select}>
-      <InputLabel id="nba-player-dropdown-label">
-        Select an NBA player:
+      <InputLabel id="epl-player-dropdown-label">
+        Select an EPL player:
       </InputLabel>
       <Select
-        labelId="nba-player-dropdown-label"
-        id="nba-player-dropdown"
+        labelId="epl-player-dropdown-label"
+        id="epl-player-dropdown"
         value={selectedPlayer}
-        onChange={handleNBAPlayerSelection}
+        onChange={handleEPLPlayerSelection}
       >
         <MenuItem value="">
-          <em>--Select an NBA player--</em>
+          <em>--Select an EPL player--</em>
         </MenuItem>
-        {NBAPlayers.map((player) => (
+        {EPLPlayers.map((player) => (
           <MenuItem key={player} value={player}>
             {" "}
             {player}{" "}
@@ -65,7 +65,7 @@ const NBAPlayerDropdown = ({
   );
 };
 
-const NBAGuessThePlayer = () => {
+const EPLGuessThePlayer = () => {
   const numOfTries = 3;
   const [selectedPlayer, setSelectedPlayer] = useState("");
   const [displayGuesses, setDisplayGuesses] = useState([]);
@@ -76,10 +76,10 @@ const NBAGuessThePlayer = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const classes = useStyles();
-  const currentQuestion = NBAPlayerQuestions[currentQuestionIndex];
+  const currentQuestion = EPLPlayerQuestions[currentQuestionIndex];
   const correctAnswer = currentQuestion.answer;
 
-  const handleNBAPlayerSelection = (e) => {
+  const handleEPLPlayerSelection = (e) => {
     setSelectedPlayer(e.target.value);
   };
 
@@ -119,13 +119,13 @@ const NBAGuessThePlayer = () => {
     <Card variant="outlined" className={classes.card}>
       <CardContent>
         <Typography variant="h4" component="h1" gutterBottom>
-          Guess the NBA Player
+          Guess the EPL Player
         </Typography>
         <Typography variant="h6" component="h2" gutterBottom>
           {currentQuestion.question}
         </Typography>
-        <NBAPlayerDropdown
-          handleNBAPlayerSelection={handleNBAPlayerSelection}
+        <EPLPlayerDropdown
+          handleEPLPlayerSelection={handleEPLPlayerSelection}
           selectedPlayer={selectedPlayer}
           gameOver={gameOver}
           classes={classes}
@@ -154,13 +154,15 @@ const NBAGuessThePlayer = () => {
         <div className={classes.text}>
           {gameOverMessage}
         </div>
-       {!gameOver && <div>{`Lives: ${remainingLives}`}</div>}
+        {!gameOver && 
+          <div>{`Lives: ${remainingLives}`}</div>
+        }
         <div className={classes.text}>
-        {!gameOver && <div>{`Score: ${score}`}</div>}
+          <Typography variant="">Score: {score}</Typography>
         </div>
       </CardContent>
     </Card>
   );
 };
 
-export default NBAGuessThePlayer;
+export default EPLGuessThePlayer;
