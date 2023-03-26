@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NBATeams from "../TeamLists/NBATeams";
+import NBAPlayers from "../PlayerLists/NBAPlayers";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
@@ -32,26 +32,31 @@ const useStyles = makeStyles({
   },
 });
 
-const NBATeamDropdown = ({ handleNBATeamSelection, selectedTeam, gameOver, classes }) => {
+const NBAPlayerDropdown = ({
+  handleNBAPlayerSelection,
+  selectedPlayer,
+  gameOver,
+  classes,
+}) => {
   return (
     <FormControl fullWidth className={classes.select}>
-      <InputLabel id="nba-team-dropdown-label">
-        Select an NBA team:
-        </InputLabel>
+      <InputLabel id="nba-player-dropdown-label">
+        Select an NBA player:
+      </InputLabel>
       <Select
-        labelId="nba-team-dropdown-label"
-        id="nba-team-dropdown"
-        value={selectedTeam}
-        onChange={handleNBATeamSelection}
+        labelId="nba-player-dropdown-label"
+        id="nba-player-dropdown"
+        value={selectedPlayer}
+        onChange={handleNBAPlayerSelection}
         disabled={gameOver}
       >
-         <MenuItem value="">
-          <em>--Select an NBA team--</em>
+        <MenuItem value="">
+          <em>--Select an NBA player--</em>
         </MenuItem>
-        {NBATeams.map((team) => (
-          <MenuItem key={team} value={team}>
+        {NBAPlayers.map((player) => (
+          <MenuItem key={player} value={player}>
             {" "}
-            {team}{" "}
+            {player}{" "}
           </MenuItem>
         ))}
       </Select>
@@ -59,26 +64,26 @@ const NBATeamDropdown = ({ handleNBATeamSelection, selectedTeam, gameOver, class
   );
 };
 
-const NBAGuessTheTeam = ({ correctAnswer }) => {
+const NBAGuessThePlayer = ({ correctAnswer }) => {
   const numOfTries = 5;
-  const [selectedTeam, setSelectedTeam] = useState("");
+  const [selectedPlayer, setSelectedPlayer] = useState("");
   const [displayGuesses, setDisplayGuesses] = useState([]);
   const [remainingGuesses, setRemainingGuesses] = useState(numOfTries);
   const [gameOver, setGameOver] = useState(false);
   const [numOfTriesUsed, setNumOfTriesUsed] = useState(0);
   const classes = useStyles();
 
-  const handleNBATeamSelection = (e) => {
-    setSelectedTeam(e.target.value);
+  const handleNBAPlayerSelection = (e) => {
+    setSelectedPlayer(e.target.value);
   };
 
   const handleGuess = () => {
-    setDisplayGuesses([...displayGuesses, selectedTeam]);
-    setSelectedTeam("");
+    setDisplayGuesses([...displayGuesses, selectedPlayer]);
+    setSelectedPlayer("");
     setRemainingGuesses(remainingGuesses - 1);
     setNumOfTriesUsed(numOfTries - remainingGuesses + 1);
 
-    if (selectedTeam === correctAnswer) {
+    if (selectedPlayer === correctAnswer) {
       setGameOver(true);
     }
   };
@@ -86,12 +91,12 @@ const NBAGuessTheTeam = ({ correctAnswer }) => {
   return (
     <Card variant="outlined" className={classes.card}>
       <CardContent>
-      <Typography variant="h4" component="h1" gutterBottom>
-          Guess the NBA Team
+        <Typography variant="h4" component="h1" gutterBottom>
+          Guess the NBA Player
         </Typography>
-        <NBATeamDropdown
-          handleNBATeamSelection={handleNBATeamSelection}
-          selectedTeam={selectedTeam}
+        <NBAPlayerDropdown
+          handleNBAPlayerSelection={handleNBAPlayerSelection}
+          selectedPlayer={selectedPlayer}
           gameOver={gameOver}
           classes={classes}
         />
@@ -127,4 +132,4 @@ const NBAGuessTheTeam = ({ correctAnswer }) => {
   );
 };
 
-export default NBAGuessTheTeam;
+export default NBAGuessThePlayer;
