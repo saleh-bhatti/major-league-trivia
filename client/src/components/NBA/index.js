@@ -366,7 +366,7 @@ class Home extends Component {
 
           <div>
             <Box mt={1} textAlign="left">
-              <NBAGuessThePlayer correctAnswer={"LeBron James"} />
+              <NBAGuessThePlayer/>
             </Box>
           </div>
 
