@@ -89,7 +89,11 @@ function NavBar(props) {
 
   return (
     <AppBar position="fixed">
-      < Toolbar >
+      <Toolbar>
+        <Typography variant="h5">
+          VASA SPORTS
+        </Typography>
+
         <Link
           color="inherit"
           style={{ cursor: "pointer" }}
@@ -160,7 +164,7 @@ class Home extends Component {
 
           <div>
             <Box mt={1} textAlign="left">
-              <EPLGuessThePlayer/>
+              <EPLGuessThePlayer />
             </Box>
           </div>
 
@@ -171,7 +175,7 @@ class Home extends Component {
           </div>
 
           <div>
-            <EPLOverUnder/>
+            <EPLOverUnder />
           </div>
         </Grid>
       </Grid>
