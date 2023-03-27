@@ -109,9 +109,9 @@ function NavBar(props) {
         <Link
           color="inherit"
           style={{ cursor: "pointer" }}
-          onClick={() => history.push("/NFL")}
+          onClick={() => history.push("/NBA")}
         >
-          <Button color="inherit">NFL</Button>
+          <Button color="inherit">NBA</Button>
         </Link>
         <Link
           color="inherit"

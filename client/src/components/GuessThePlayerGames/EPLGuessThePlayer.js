@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 const useStyles = makeStyles({
   card: {
-    width: "600px",
+    width: "800px",
     margin: "auto",
     marginTop: "20px",
     marginBottom: "20px",
@@ -154,7 +154,7 @@ const EPLGuessThePlayer = () => {
         <div className={classes.text}>
           {gameOverMessage}
         </div>
-        {!gameOver && 
+        {!gameOver &&
           <div>{`Lives: ${remainingLives}`}</div>
         }
         <div className={classes.text}>

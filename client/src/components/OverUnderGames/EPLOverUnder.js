@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 const useStyles = makeStyles({
   card: {
-    width: "600px",
+    width: "800px",
     margin: "auto",
     marginTop: "20px",
     marginBottom: "20px",

@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 const useStyles = makeStyles({
   card: {
-    width: "600px",
+    width: "1000px",
     margin: "auto",
     marginTop: "20px",
     marginBottom: "20px",
@@ -154,9 +154,9 @@ const NBAGuessThePlayer = () => {
         <div className={classes.text}>
           {gameOverMessage}
         </div>
-       {!gameOver && <div>{`Lives: ${remainingLives}`}</div>}
+        {!gameOver && <div>{`Lives: ${remainingLives}`}</div>}
         <div className={classes.text}>
-        {!gameOver && <div>{`Score: ${score}`}</div>}
+          {!gameOver && <div>{`Score: ${score}`}</div>}
         </div>
       </CardContent>
     </Card>
