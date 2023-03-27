@@ -83,6 +83,12 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing(2),
     align: 'center'
   },
+  button: {
+    marginTop: "10px",
+    marginBottom: "10px",
+    marginLeft: "10px",
+    marginRight:"10px",
+  },
 });
 
 function NavBar(props) {
@@ -195,10 +201,9 @@ class Home extends Component {
         container
         spacing={0}
         direction="column"
-        justify="flex-start"
-        alignItems="flex-start"
-        style={{ minHeight: "100vh" }}
-        className={classes.mainMessageContainer}
+        justifyContent="flex-start"
+        alignItems="center"
+        style={{ minHeight: "100vh", paddingTop: "100px" }}
       >
 
         <Grid item align="center">
@@ -223,7 +228,7 @@ class Home extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => history.push("/NBA")}
               >
-                <Button color="inherit" variant="outlined"> &#127936; Trivia! </Button>
+                <Button className={classes.button} color="inherit" variant="outlined"> &#127936; Trivia! </Button>
               </Link>
 
               <Link
@@ -231,7 +236,7 @@ class Home extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => history.push("/NFL")}
               >
-                <Button color="inherit" variant="outlined"> &#127944; Trivia! </Button>
+                <Button className={classes.button} color="inherit" variant="outlined"> &#127944; Trivia! </Button>
               </Link>
 
               <Link
@@ -239,7 +244,7 @@ class Home extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => history.push("/EPL")}
               >
-                <Button color="inherit" variant='outlined'> &#9917; Trivia! </Button>
+                <Button className={classes.button} color="inherit" variant='outlined'> &#9917; Trivia! </Button>
               </Link>
 
             </CardContent>

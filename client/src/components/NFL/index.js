@@ -92,9 +92,7 @@ function NavBar(props) {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        <Typography variant="h5">
-          VASA SPORTS
-        </Typography>
+        <Typography variant="h5">VASA SPORTS</Typography>
         <Link
           color="inherit"
           style={{ cursor: "pointer" }}
@@ -137,7 +135,6 @@ function NavBar(props) {
   );
 }
 
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -150,50 +147,31 @@ class Home extends Component {
   render() {
     const { classes } = this.props;
 
-    const mainMessage = (
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        justify="flex-start"
-        style={{ minHeight: "100vh" }}
-        className={classes.mainMessageContainer}
-      >
-        <Grid item>
-          <div className={classes.root}>
-            <NavBar history={this.props.history} />
-          </div>
-
-          <div>
-            <Box mt={4} textAlign="left">
-               <NFLGuessThePlayer /> 
-            </Box>
-          </div>
-
-
-
-          <div>
-            <Box mt={4} textAlign="left">
-              <NFLGuessTheTeam />
-            </Box>
-          </div>
-
-
-          <div>
-            <Box mt={4} textAlign="left">
-              <NFLOverUnder />
-            </Box>
-          </div>
-
-        </Grid>
-      </Grid>
-    );
-
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <Paper className={classes.paper}>{mainMessage}</Paper>
+          <Paper className={classes.paper}>
+            <div>
+            <NavBar history={this.props.history} />
+            </div>
+            
+            <div>
+              <Box mt={12} textAlign="left">
+                <NFLGuessThePlayer />
+              </Box>
+            </div>
+            <div>
+              <Box mt={4} textAlign="left">
+                <NFLGuessTheTeam />
+              </Box>
+            </div>
+            <div>
+              <Box mt={4} textAlign="left">
+                <NFLOverUnder />
+              </Box>
+            </div>
+          </Paper>
         </div>
       </MuiThemeProvider>
     );

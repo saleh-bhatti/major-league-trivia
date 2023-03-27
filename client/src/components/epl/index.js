@@ -147,44 +147,31 @@ class Home extends Component {
   render() {
     const { classes } = this.props;
 
-    const mainMessage = (
-      <Grid
-        container
-        spacing={0}
-        direction="column"
-        justify="flex-start"
-        style={{ minHeight: "100vh" }}
-        className={classes.mainMessageContainer}
-      >
-        <Grid item>
-          <div className={classes.root}>
-            <NavBar history={this.props.history} />
-          </div>
-
-          <div>
-            <Box mt={1} textAlign="left">
-              <EPLGuessThePlayer />
-            </Box>
-          </div>
-
-          <div>
-            <Box mt={8} textAlign="left">
-              <EPLGuessTheTeam correctAnswer={"Toronto Raptors"} />
-            </Box>
-          </div>
-
-          <div>
-            <EPLOverUnder />
-          </div>
-        </Grid>
-      </Grid>
-    );
-
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <Paper className={classes.paper}>{mainMessage}</Paper>
+          <Paper className={classes.paper}>
+            <div>
+            <NavBar history={this.props.history} />
+            </div>
+            
+            <div>
+              <Box mt={12} textAlign="left">
+                <EPLGuessThePlayer />
+              </Box>
+            </div>
+            <div>
+              <Box mt={4} textAlign="left">
+                <EPLGuessTheTeam />
+              </Box>
+            </div>
+            <div>
+              <Box mt={4} textAlign="left">
+                <EPLOverUnder />
+              </Box>
+            </div>
+          </Paper>
         </div>
       </MuiThemeProvider>
     );
