@@ -32,7 +32,7 @@ const questions = [
     answer: "Over",
   },
   {
-    question: "Did Cristino Ronaldo Son score over or under 17 goals in the 2021-22 EPL season?",
+    question: "Did Cristino Ronaldo score over or under 17 goals in the 2021-22 EPL season?",
     answer: "Over",
   },
   {

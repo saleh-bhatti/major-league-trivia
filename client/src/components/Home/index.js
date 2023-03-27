@@ -100,7 +100,7 @@ function NavBar(props) {
     <AppBar position="fixed">
 
       <Toolbar>
-        <Typography variant="h5">
+        <Typography variant="h5"  style={{ marginRight: "20px" }}>
           VASA SPORTS
         </Typography>
 
