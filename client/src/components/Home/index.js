@@ -21,6 +21,8 @@ import history from "../Navigation/history";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -201,41 +203,47 @@ class Home extends Component {
 
         <Grid item align="center">
 
-          <div className={classes.root}>
-            <NavBar history={this.props.history} />
-          </div>
+          <Card>
+            <CardContent>
+
+              <div className={classes.root}>
+                <NavBar history={this.props.history} />
+              </div>
 
 
-          <Typography variant='h1'>
-            Welcome to VASA Sports!
-          </Typography>
-          <Typography variant='h5'>
-            Can you become the sports trivia &#128016;?
-          </Typography>
+              <Typography variant='h1'>
+                Welcome to VASA Sports!
+              </Typography>
+              <Typography variant='h5'>
+                Can you become the sports trivia &#128016;?
+              </Typography>
 
-          <Link
-            color="inherit"
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/NBA")}
-          >
-            <Button color="inherit"> &#127936; Trivia! </Button>
-          </Link>
+              <Link
+                color="inherit"
+                style={{ cursor: "pointer" }}
+                onClick={() => history.push("/NBA")}
+              >
+                <Button color="inherit" variant="outlined"> &#127936; Trivia! </Button>
+              </Link>
 
-          <Link
-            color="inherit"
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/NFL")}
-          >
-            <Button color="inherit"> &#127944; Trivia! </Button>
-          </Link>
+              <Link
+                color="inherit"
+                style={{ cursor: "pointer" }}
+                onClick={() => history.push("/NFL")}
+              >
+                <Button color="inherit" variant="outlined"> &#127944; Trivia! </Button>
+              </Link>
 
-          <Link
-            color="inherit"
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/EPL")}
-          >
-            <Button color="inherit"> &#9917; Trivia! </Button>
-          </Link>
+              <Link
+                color="inherit"
+                style={{ cursor: "pointer" }}
+                onClick={() => history.push("/EPL")}
+              >
+                <Button color="inherit" variant='outlined'> &#9917; Trivia! </Button>
+              </Link>
+
+            </CardContent>
+          </Card>
 
         </Grid>
       </Grid >
