@@ -23,7 +23,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-
+import NFLGuessThePlayer from "../GuessThePlayerGames/NFLGuessThePlayer";
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -132,141 +132,7 @@ function NavBar(props) {
   );
 }
 
-const numOfTries = 5;
 
-function GuessComponent({ correctAnswer }) {
-  const [inputValue, setInputValue] = useState("");
-  const [displayValues, setDisplayValues] = useState([]);
-  const [remainingGuesses, setRemainingGuesses] = useState(numOfTries);
-  const [gameOver, setGameOver] = useState(false);
-  const [numOfTriesUsed, setNumOfTriesUsed] = useState(0);
-
-  const handleSubmit = () => {
-    setDisplayValues([...displayValues, inputValue]);
-    setInputValue("");
-    setRemainingGuesses(remainingGuesses - 1);
-    setNumOfTriesUsed(numOfTries - remainingGuesses + 1);
-    if (inputValue === correctAnswer) {
-      setGameOver(true);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSubmit();
-    }
-  };
-
-  return (
-    <div>
-      <TextField
-        label="Guess"
-        variant="outlined"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            handleSubmit();
-            setInputValue("");
-          }
-        }}
-        disabled={remainingGuesses === 0 || gameOver}
-      />
-      <div>
-        {displayValues.map((guess, index) => (
-          <div key={index}>{guess}</div>
-        ))}
-      </div>
-      {remainingGuesses === 0 && <div>Out of guesses!</div>}
-      {gameOver && (
-        <div>
-          <Typography>You guessed correctly in {numOfTries - remainingGuesses} tries!</Typography>
-        </div>
-      )}
-      {!gameOver && remainingGuesses > 0 && (
-        <div>{`Remaining guesses: ${remainingGuesses}`}</div>
-      )}
-    </div>
-  );
-}
-
-const Overundergame = () => {
-  const [selectedButton, setSelectedButton] = React.useState('');
-  const [message, setMessage] = React.useState('');
-  const [gameOver, setGameOver] = React.useState(false);
-
-  const question = "Did Aaron Rodgers score over or under 20 touchdowns in the 2022 NFL season?";
-  const correctAnswer = "Over";
-
-  const handleButtonClick = (event) => {
-    if (!gameOver) {
-      const selectedValue = event.currentTarget.value;
-      setSelectedButton(selectedValue);
-
-      if (selectedValue === correctAnswer) {
-        setMessage("Correct!");
-      } else {
-        setMessage("Incorrect :(");
-      }
-      setGameOver(true);
-    }
-  };
-
-  return (
-    <Grid
-      container
-      spacing={6}
-      direction="column"
-      justifyContent="flex-start"
-      alignItems="flex-start"
-      style={{ minHeight: '100vh' }}
-    >
-      <Grid item>
-        <Typography variant="h1">
-          Over and Under Sports Game!
-        </Typography>
-      </Grid>
-
-      <Grid item>
-        <Typography variant="body1">
-          {question}
-        </Typography>
-      </Grid>
-
-      <Grid item>
-        <Button
-          variant="contained"
-          color="primary"
-          value="Over"
-          onClick={handleButtonClick}
-          disabled={gameOver}
-        >
-          Over
-        </Button>
-      </Grid>
-
-      <Grid item>
-        <Button
-          variant="contained"
-          color="primary"
-          value="Under"
-          onClick={handleButtonClick}
-          disabled={gameOver}
-        >
-          Under
-        </Button>
-      </Grid>
-
-      {gameOver && (
-        <Grid item>
-          <Typography variant="h4">
-            {message}
-          </Typography>
-        </Grid>
-      )}
-    </Grid>
-  )
-};
 
 class Home extends Component {
   constructor(props) {
@@ -295,33 +161,15 @@ class Home extends Component {
           <div className={classes.root}>
             <NavBar history={this.props.history} />
           </div>
-
-          <div>
-            <Typography variant="h1">Guess The Player</Typography>
-            <Box mt={2}>
-              <Typography variant="body1">Who is the current reigning MVP?</Typography>
-            </Box>
-          </div>
-          <div>
-            <Box mt={2}>
-              <GuessComponent correctAnswer={"Patrick Mahomes"} />
-            </Box>
-          </div>
-
+          <NFLGuessThePlayer />
           <div>
             <Typography variant="h1">Guess The Team</Typography>
             <Box mt={2}>
               <Typography variant="body1">Who are the current SuperBowl holders?</Typography>
             </Box>
           </div>
-          <div>
-            <Box mt={2}>
-              <GuessComponent correctAnswer={"Kansas City Chiefs"} />
-            </Box>
-          </div>
-          <div>
-            <Overundergame />
-          </div>
+     
+         
 
         </Grid>
       </Grid>
