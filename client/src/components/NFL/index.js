@@ -25,7 +25,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import NFLGuessTheTeam from "../GuessTheTeamGames/NFLGuessTheTeam";
-// import NFLGuessThePlayer from "../GuessThePlayerGames/NFLGuessThePlayer";
+import NFLGuessThePlayer from "../GuessThePlayerGames/NFLGuessThePlayer";
 import NFLOverUnder from "../OverUnderGames/NFLOverUnder";
 
 //Dev mode
@@ -73,7 +73,7 @@ const styles = (theme) => ({
     marginTop: "20vh",
     marginLeft: theme.spacing(20),
     [theme.breakpoints.down("xs")]: {
-      marginLeft: theme.spacing(4),
+      marginLeft: theme.spacing(10),
     },
   },
   paper: {
@@ -163,7 +163,7 @@ class Home extends Component {
 
           <div>
             <Box mt={4} textAlign="left">
-              {/* <NFLGuessThePlayer /> */}
+               <NFLGuessThePlayer /> 
             </Box>
           </div>
 
@@ -171,7 +171,7 @@ class Home extends Component {
 
           <div>
             <Box mt={4} textAlign="left">
-              <NFLGuessTheTeam correctAnswer={"Toronto Raptors"} />
+              <NFLGuessTheTeam />
             </Box>
           </div>
 
