@@ -1,129 +1,127 @@
 const questions = [
-    {
-      answer: "Atlanta Hawks",
-      question: "https://i.ibb.co/wJJyH5f/Screenshot-2023-03-26-at-6-08-21-PM-Small.jpg"
-    },
-    {
-      answer: "Boston Celtics",
-      question: "https://upload.wikimedia.org/wikipedia/en/8/8f/Boston_Celtics.svg"
-    },
-    {
-      answer: "Brooklyn Nets",
-      question: "https://upload.wikimedia.org/wikipedia/commons/4/44/Brooklyn_Nets_newlogo.svg"
-    },
-    {
-      answer: "Charlotte Hornets",
-      question: "https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg"
-    },
-    {
-      answer: "Chicago Bulls",
-      question: "https://upload.wikimedia.org/wikipedia/en/6/67/Chicago_Bulls_logo.svg"
-    },
-    {
-      answer: "Cleveland Cavaliers",
-      question: "https://upload.wikimedia.org/wikipedia/en/4/4b/Cleveland_Cavaliers_logo.svg"
-    },
-    {
-      answer: "Dallas Mavericks",
-      question: "https://upload.wikimedia.org/wikipedia/en/9/97/Dallas_Mavericks_logo.svg"
-    },
-    {
-      answer: "Denver Nuggets",
-      question: "https://upload.wikimedia.org/wikipedia/en/7/76/Denver_Nuggets.svg"
-    },
-    {
-      answer: "Detroit Pistons",
-      question: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Detroit_Pistons_logo.svg"
-    },
-    {
-      answer: "Golden State Warriors",
-      question: "https://upload.wikimedia.org/wikipedia/en/0/01/Golden_State_Warriors_logo.svg"
-    },
-    {
-      answer: "Houston Rockets",
-      question: "https://upload.wikimedia.org/wikipedia/en/2/28/Houston_Rockets.svg"
-    },
-    {
-      answer: "Indiana Pacers",
-      question: "https://upload.wikimedia.org/wikipedia/en/1/1b/Indiana_Pacers.svg"
-    },
-    {
-      answer: "Los Angeles Clippers",
-      question: "https://upload.wikimedia.org/wikipedia/en/b/bb/Los_Angeles_Clippers_%282015%29.svg"
-    },
-    {
-      answer: "Los Angeles Lakers",
-      question: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Los_Angeles_Lakers_logo.svg"
-    },
-    {
-      answer: "Memphis Grizzlies",
-      question: "https://upload.wikimedia.org/wikipedia/en/f/f1/Memphis_Grizzlies.svg"
-    },
-    {
-      answer: "Miami Heat",
-      question: "https://upload.wikimedia.org/wikipedia/en/f/fb/Miami_Heat_logo.svg"
-    },
-    {
-      answer: "Milwaukee Bucks",
-      question: "https://upload.wikimedia.org/wikipedia/en/4/4a/Milwaukee_Bucks_logo.svg"
-    },
-    {
-      answer: "Minnesota Timberwolves",
-      question: "https://upload.wikimedia.org/wikipedia/en/c/c2/Minnesota_Timberwolves_logo.svg"
-    },
-    {
-      answer: "New Orleans Pelicans",
-      question: "https://upload.wikimedia.org/wikipedia/en/0/0d/New_Orleans_Pelicans_logo.svg"
-    },
-    {
-        answer: "New York Knicks",
-        question: "https://upload.wikimedia.org/wikipedia/en/2/25/New_York_Knicks_logo.svg"
-    },
-    {
-        answer: "Oklahoma City Thunder",
-        question: "https://upload.wikimedia.org/wikipedia/en/5/5d/Oklahoma_City_Thunder.svg"
-    },
-    {
-        answer: "Orlando Magic",
-        question: "https://upload.wikimedia.org/wikipedia/en/1/10/Orlando_Magic_logo.svg"
-    },
-    {
-        answer: "Philadelphia 76ers",
-        question: "https://upload.wikimedia.org/wikipedia/en/0/0e/Philadelphia_76ers_logo.svg"
-    },
-    {
-        answer: "Phoenix Suns",
-        question: "https://upload.wikimedia.org/wikipedia/en/d/dc/Phoenix_Suns_logo.svg"
-    },
-    {
-        answer: "Portland Trail Blazers",
-        question: "https://upload.wikimedia.org/wikipedia/en/2/21/Portland_Trail_Blazers_logo.svg"
-    },
-    {
-        answer: "Sacramento Kings",
-        question: "https://upload.wikimedia.org/wikipedia/en/c/c7/SacramentoKings.svg"
-    },
-    {
-        answer: "San Antonio Spurs",
-        question: "https://upload.wikimedia.org/wikipedia/en/a/a2/San_Antonio_Spurs.svg"
-    },
-    {
-        answer: "Toronto Raptors",
-        question: "https://upload.wikimedia.org/wikipedia/en/3/36/Toronto_Raptors_logo.svg"
-    },
-    {
-        answer: "Utah Jazz",
-        question: "https://upload.wikimedia.org/wikipedia/en/0/04/Utah_Jazz_logo_%282016%29.png"
-    },
-    {
-        answer: "Washington Wizards",
-        question: "https://upload.wikimedia.org/wikipedia/en/0/02/Washington_Wizards_logo.svg"
-    }
-    ];
+  {
+    answer: "Atlanta Hawks",
+    question: "https://i.ibb.co/HB46Ztz/Screen-Shot-2023-03-26-at-9-14-52-PM.png"
+  },
+  {
+    answer: "Boston Celtics",
+    question: "https://i.ibb.co/hYPFZkz/Screen-Shot-2023-03-26-at-9-16-04-PM.png"
+  },
+  {
+    answer: "Brooklyn Nets",
+    question: "https://i.ibb.co/b5GY2C6/Screen-Shot-2023-03-26-at-9-17-40-PM.png"
+  },
+  {
+    answer: "Charlotte Hornets",
+    question: "https://i.ibb.co/vqN2J2J/Screen-Shot-2023-03-26-at-9-18-16-PM.png"
+  },
+  {
+    answer: "Chicago Bulls",
+    question: "https://i.ibb.co/89GFfhd/Screen-Shot-2023-03-26-at-9-18-49-PM.png"
+  },
+  {
+    answer: "Cleveland Cavaliers",
+    question: "https://i.ibb.co/HdsBgNj/Screen-Shot-2023-03-26-at-9-19-20-PM.png"
+  },
+  {
+    answer: "Dallas Mavericks",
+    question: "https://i.ibb.co/qnhqYSp/Screen-Shot-2023-03-26-at-9-19-57-PM.png"
+  },
+  {
+    answer: "Denver Nuggets",
+    question: "https://i.ibb.co/Ns1YjTF/Screen-Shot-2023-03-26-at-9-20-22-PM.png"
+  },
+  {
+    answer: "Detroit Pistons",
+    question: "https://i.ibb.co/nMVqQvN/Screen-Shot-2023-03-26-at-9-20-53-PM.png"
+  },
+  {
+    answer: "Golden State Warriors",
+    question: "https://i.ibb.co/wdqgnY7/Screen-Shot-2023-03-26-at-9-21-29-PM.png"
+  },
+  {
+    answer: "Houston Rockets",
+    question: "https://i.ibb.co/xhk2605/Screen-Shot-2023-03-26-at-9-21-56-PM.png"
+  },
+  {
+    answer: "Indiana Pacers",
+    question: "https://i.ibb.co/3M1LsVb/Screen-Shot-2023-03-26-at-9-22-22-PM.png"
+  },
+  {
+    answer: "Los Angeles Clippers",
+    question: "https://i.ibb.co/pzYmw79/Screen-Shot-2023-03-26-at-9-23-15-PM.png"
+  },
+  {
+    answer: "Los Angeles Lakers",
+    question: "https://i.ibb.co/4Mq8JKb/Screen-Shot-2023-03-26-at-9-23-49-PM.png"
+  },
+  {
+    answer: "Memphis Grizzlies",
+    question: "https://i.ibb.co/Byzs0g1/Screen-Shot-2023-03-26-at-9-24-18-PM.png"
+  },
+  {
+    answer: "Miami Heat",
+    question: "https://i.ibb.co/z4wRsy1/Screen-Shot-2023-03-26-at-9-24-50-PM.png"
+  },
+  {
+    answer: "Milwaukee Bucks",
+    question: "https://i.ibb.co/hMRT5vL/Screen-Shot-2023-03-26-at-9-25-12-PM.png"
+  },
+  {
+    answer: "Minnesota Timberwolves",
+    question: "https://i.ibb.co/XJFWgJ4/Screen-Shot-2023-03-26-at-9-25-36-PM.png"
+  },
+  {
+    answer: "New Orleans Pelicans",
+    question: "https://i.ibb.co/2vGYKJN/Screen-Shot-2023-03-26-at-9-26-08-PM.png"
+  },
+  {
+    answer: "New York Knicks",
+    question: "https://i.ibb.co/s5Kv8WD/Screen-Shot-2023-03-26-at-9-26-37-PM.png"
+  },
+  {
+    answer: "Oklahoma City Thunder",
+    question: "https://i.ibb.co/vPXcC4v/Screen-Shot-2023-03-26-at-9-27-21-PM.png"
+  },
+  {
+    answer: "Orlando Magic",
+    question: "https://i.ibb.co/J2MYT43/Screen-Shot-2023-03-26-at-9-27-44-PM.png"
+  },
+  {
+    answer: "Philadelphia 76ers",
+    question: "https://i.ibb.co/gP21vh1/Screen-Shot-2023-03-26-at-9-28-15-PM.png"
+  },
+  {
+    answer: "Phoenix Suns",
+    question: "https://i.ibb.co/1vCxw0M/Screen-Shot-2023-03-26-at-9-28-38-PM.png"
+  },
+  {
+    answer: "Portland Trail Blazers",
+    question: "https://i.ibb.co/F3MX9YD/Screen-Shot-2023-03-26-at-9-28-57-PM.png"
+  },
+  {
+    answer: "Sacramento Kings",
+    question: "https://i.ibb.co/B44SNs4/Screen-Shot-2023-03-26-at-9-29-24-PM.png"
+  },
+  {
+    answer: "San Antonio Spurs",
+    question: "https://i.ibb.co/RbYfGLr/Screen-Shot-2023-03-26-at-9-29-44-PM.png"
+  },
+  {
+    answer: "Toronto Raptors",
+    question: "https://i.ibb.co/swtBkwc/Screen-Shot-2023-03-26-at-9-30-03-PM.png"
+  },
+  {
+    answer: "Utah Jazz",
+    question: "https://i.ibb.co/Hnxxyqs/Screen-Shot-2023-03-26-at-9-31-04-PM.png"
+  },
+  {
+    answer: "Washington Wizards",
+    question: "https://i.ibb.co/SRbf27Q/Screen-Shot-2023-03-26-at-9-31-31-PM.png"
+  }
+];
 
-    const NBATeamQuestions = questions.sort()
+const NBATeamQuestions = questions.sort(() => Math.random() - 0.5)
 
-    export default NBATeamQuestions;
+export default NBATeamQuestions;
 
-
-//    "https://i.ibb.co/wJJyH5f/Screenshot-2023-03-26-at-6-08-21-PM-Small.jpg"
