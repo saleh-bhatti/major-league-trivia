@@ -121,7 +121,6 @@ const questions = [
   }
 ];
 
-const NBATeamQuestions = questions.sort(() => Math.random() - 0.5)
-
+    const NBATeamQuestions = questions.sort(() => Math.random() - 0.5)
 export default NBATeamQuestions;
 
