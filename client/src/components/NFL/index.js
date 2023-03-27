@@ -20,12 +20,14 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Router, Switch, Route } from "react-router-dom";
 import history from "../Navigation/history";
 import TextField from "@material-ui/core/TextField";
+
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import NFLGuessTheTeam from "../GuessTheTeamGames/NFLGuessTheTeam";
 // import NFLGuessThePlayer from "../GuessThePlayerGames/NFLGuessThePlayer";
 import NFLOverUnder from "../OverUnderGames/NFLOverUnder";
+
 //Dev mode
 const serverURL = ""; //enable for dev mode
 
@@ -132,6 +134,7 @@ function NavBar(props) {
   );
 }
 
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -164,17 +167,21 @@ class Home extends Component {
             </Box>
           </div>
 
+
+
           <div>
             <Box mt={4} textAlign="left">
               <NFLGuessTheTeam correctAnswer={"Toronto Raptors"} />
             </Box>
           </div>
 
+
           <div>
             <Box mt={4} textAlign="left">
               <NFLOverUnder />
             </Box>
           </div>
+
         </Grid>
       </Grid>
     );

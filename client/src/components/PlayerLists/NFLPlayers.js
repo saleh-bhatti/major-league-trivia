@@ -1,3 +1,4 @@
+
 const NFLPlayers = [
     "Tom Brady",
     "Patrick Mahomes",
@@ -24,3 +25,4 @@ const NFLPlayers = [
   ];
   
   export default NFLPlayers;
+
