@@ -1,4 +1,4 @@
-const EPLplayers = [
+const EPLPlayers = [
     'Alexandre Lacazette',
     'Andrew Robertson',
     'Bernardo Silva',
@@ -41,4 +41,4 @@ const EPLplayers = [
     'Wilfried Zaha'
   ];
   
-  export default EPLplayers;
+  export default EPLPlayers;
