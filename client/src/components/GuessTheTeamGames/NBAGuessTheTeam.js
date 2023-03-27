@@ -9,6 +9,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
+import NBATeamQuestions from "../GuessTheTeamQuestions/NBATeamQuestions";
+import { useEffect } from "react";
 
 const useStyles = makeStyles({
   card: {
@@ -26,32 +28,36 @@ const useStyles = makeStyles({
     marginTop: "10px",
     marginBottom: "10px",
   },
-  guesses: {
+  text: {
     marginTop: "10px",
     marginBottom: "10px",
   },
 });
 
-const NBATeamDropdown = ({ handleNBATeamSelection, selectedTeam, gameOver, classes }) => {
+const NBATeamDropdown = ({
+  handleNBATeamSelection,
+  selectedTeam,
+  gameOver,
+  classes,
+}) => {
   return (
     <FormControl fullWidth className={classes.select}>
       <InputLabel id="nba-team-dropdown-label">
-        Select an NBA team:
-        </InputLabel>
+        Select an NBA Team:
+      </InputLabel>
       <Select
         labelId="nba-team-dropdown-label"
         id="nba-team-dropdown"
         value={selectedTeam}
         onChange={handleNBATeamSelection}
-        disabled={gameOver}
       >
-         <MenuItem value="">
-          <em>--Select an NBA team--</em>
+        <MenuItem value="">
+          <em>--Select an NBA Team--</em>
         </MenuItem>
-        {NBATeams.map((team) => (
-          <MenuItem key={team} value={team}>
+        {NBATeams.map((Team) => (
+          <MenuItem key={Team} value={Team}>
             {" "}
-            {team}{" "}
+            {Team}{" "}
           </MenuItem>
         ))}
       </Select>
@@ -59,35 +65,64 @@ const NBATeamDropdown = ({ handleNBATeamSelection, selectedTeam, gameOver, class
   );
 };
 
-const NBAGuessTheTeam = ({ correctAnswer }) => {
+const NBAGuessTheTeam = () => {
   const numOfTries = 5;
   const [selectedTeam, setSelectedTeam] = useState("");
   const [displayGuesses, setDisplayGuesses] = useState([]);
-  const [remainingGuesses, setRemainingGuesses] = useState(numOfTries);
+  const [displayAnswers, setDisplayAnswers] = useState([]);
+  const [gameOverMessage, setGameOverMessage] = useState("");
+  const [remainingLives, setRemainingLives] = useState(numOfTries);
   const [gameOver, setGameOver] = useState(false);
-  const [numOfTriesUsed, setNumOfTriesUsed] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
   const classes = useStyles();
+  const currentQuestion = NBATeamQuestions[currentQuestionIndex];
+  const correctAnswer = currentQuestion.answer;
 
   const handleNBATeamSelection = (e) => {
     setSelectedTeam(e.target.value);
   };
 
   const handleGuess = () => {
-    setDisplayGuesses([...displayGuesses, selectedTeam]);
-    setSelectedTeam("");
-    setRemainingGuesses(remainingGuesses - 1);
-    setNumOfTriesUsed(numOfTries - remainingGuesses + 1);
-
     if (selectedTeam === correctAnswer) {
-      setGameOver(true);
+      setDisplayAnswers([
+        ...displayAnswers,
+        `Correct! The answer was ${correctAnswer}.`,
+      ]);
+      setScore(score + 1);
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedTeam("");
+      handleNextQuestion();
+    } else {
+      setDisplayGuesses([
+        ...displayGuesses,
+        `Incorrect! The answer is not ${selectedTeam}.`,
+      ]);
+      setRemainingLives(remainingLives - 1);
     }
   };
+
+  const handleNextQuestion = () => {
+    setDisplayGuesses([]);
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  useEffect(() => {
+    if (remainingLives === 0) {
+      setDisplayGuesses([]);
+      setGameOver(true);
+      setGameOverMessage(`Out of Lives! The answer was ${correctAnswer}.`);
+    }
+  }, [remainingLives]);
 
   return (
     <Card variant="outlined" className={classes.card}>
       <CardContent>
-      <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom>
           Guess the NBA Team
+        </Typography>
+        <Typography variant="h6" component="h2" gutterBottom>
+          <img align='center' src={currentQuestion.question} />
         </Typography>
         <NBATeamDropdown
           handleNBATeamSelection={handleNBATeamSelection}
@@ -101,27 +136,30 @@ const NBAGuessTheTeam = ({ correctAnswer }) => {
           variant="contained"
           color="primary"
           size="large"
-          disabled={remainingGuesses === 0 || gameOver}
+          disabled={!selectedTeam || gameOver}
           className={classes.button}
         >
           Guess!
         </Button>
-        <div className={classes.guesses}>
+        <div className={classes.text}>
           {displayGuesses.map((guess, index) => (
             <div key={index}>{guess}</div>
           ))}
         </div>
-        {remainingGuesses === 0 && <div>Out of guesses!</div>}
-        {gameOver && (
-          <div>
-            <Typography>
-              You guessed correctly in {numOfTriesUsed} tries!
-            </Typography>
-          </div>
-        )}
-        {!gameOver && remainingGuesses > 0 && (
-          <div>{`Remaining guesses: ${remainingGuesses}`}</div>
-        )}
+        <div className={classes.text}>
+          {displayAnswers.map((answer, index) => (
+            <div key={index}>{answer}</div>
+          ))}
+        </div>
+        <div className={classes.text}>
+          {gameOverMessage}
+        </div>
+        {!gameOver && 
+          <div>{`Lives: ${remainingLives}`}</div>
+        }
+        <div className={classes.text}>
+          <Typography variant="">Score: {score}</Typography>
+        </div>
       </CardContent>
     </Card>
   );
