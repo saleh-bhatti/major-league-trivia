@@ -57,10 +57,12 @@ const styles = (theme) => ({
       backgroundColor: "#000000",
       opacity: opacityValue,
       overflow: "hidden",
+      align: 'center',
     },
   },
   mainMessage: {
     opacity: opacityValue,
+    align: 'center'
   },
 
   mainMessageContainer: {
@@ -77,6 +79,7 @@ const styles = (theme) => ({
     opacity: opacityValue,
     maxWidth: 250,
     paddingBottom: theme.spacing(2),
+    align: 'center'
   },
 });
 
@@ -202,36 +205,41 @@ class Home extends Component {
             <NavBar history={this.props.history} />
           </div>
 
-          <Typography
-            variant={"h1"}
-            className={classes.mainMessage}
-            align="center"
+
+          <Typography variant='h1'>
+            Welcome to VASA Sports!
+          </Typography>
+          <Typography variant='h5'>
+            Can you become the sports trivia &#128016;?
+          </Typography>
+
+          <Link
+            color="inherit"
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push("/NBA")}
           >
-            {this.state.mode === 0 ? (
-              <React.Fragment>Welcome to VASA Sports!</React.Fragment>
-            ) : (
+            <Button color="inherit"> &#127936; Trivia! </Button>
+          </Link>
 
-              <React.Fragment>
-                Welcome back!
-              </React.Fragment>
-            )}
-          </Typography>
-          <Grid align="center">
-            <iframe width="800" height="500" align="center"
-              src="https://www.youtube.com/embed/8y9QnS_tMkY" allowfullscreen></iframe>
-          </Grid>
+          <Link
+            color="inherit"
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push("/NFL")}
+          >
+            <Button color="inherit"> &#127944; Trivia! </Button>
+          </Link>
 
-          <Typography>
-            Placeholder for our own intro vid
+          <Link
+            color="inherit"
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push("/EPL")}
+          >
+            <Button color="inherit"> &#9917; Trivia! </Button>
+          </Link>
 
-          </Typography>
-
-          <Typography variant="h3">
-            The daily dose of sports news and trivia that you need! We hope you enjoy :)
-
-          </Typography>
         </Grid>
-      </Grid>
+      </Grid >
+
     );
 
     return (

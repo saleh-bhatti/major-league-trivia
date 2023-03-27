@@ -87,6 +87,9 @@ function NavBar(props) {
   return (
     <AppBar position="fixed">
       <Toolbar>
+        <Typography variant="h5">
+          VASA SPORTS
+        </Typography>
         <Link
           color="inherit"
           style={{ cursor: "pointer" }}
