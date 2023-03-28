@@ -1,9 +1,9 @@
+
 describe('Smoke Test - Back and Forth bw Tabs', () => {
   it('cy.go() - go back and forth between tabs', () => {
     cy.visit('/');
     cy.go('back')
     cy.go('forward')
-
     cy.go('back')
     cy.go('forward')
     cy.visit('/NFL');
@@ -16,7 +16,6 @@ describe('Smoke Test - Back and Forth bw Tabs', () => {
 
 
 })
-
 
 describe('Smoke Test - NBA Page', () => {
   it('can view the NBA page', () => {
@@ -40,9 +39,10 @@ describe('Smoke Test - EPL Page', () => {
 describe('Smoke Test', () => {
   it('can view the home page', () => {
     cy.visit('/');
-    cy.contains('Welcome');
+    cy.contains('Welcome to VASA Sports!')
   });
 });
+
 
 
 describe('Smoke Test', () => {
@@ -102,117 +102,144 @@ describe('Test Button Functionalities', () => {
 
 describe('Test Button Functionalities', () => {
   it('test buttons on appbar and their functionality', () => {
-    cy.get(':nth-child(3) > .MuiButtonBase-root').click()
+    cy.get(':nth-child(3) > .MuiButtonBase-root')
 
   });
 })
 
+describe('Test Button Functionalities', () => {
+  it('test buttons on appbar and their functionality', () => {
+    cy.get(':nth-child(4) > .MuiButtonBase-root')
 
-describe('Test NFL Page images', () => {
-  it('test image on NFL plage', () => {
-
-    cy.get('img')
-
-  });
-})
-
-
-describe('Test NFL Page Drpodown List', () => {
-  it('test dropdown of teams on NFL page', () => {
-
-    cy.get('#NFL-team-dropdown').click()
-
-  });
-})
-
-
-describe('Test NFL Over Button', () => {
-  it('test over button on NFL page', () => {
-    cy.get('[value="Over"]')
-
-  });
-})
-
-
-describe('Test NFL Under Button', () => {
-  it('test under button on NFL page', () => {
-    cy.get('[value="Under"]')
-
-  });
-})
-
-
-describe('Test NBA Page images', () => {
-  it('go to NBA page and check images', () => {
-    cy.visit('/NBA');
-    cy.get('img')
-
-  });
-})
-
-describe('Test NBA Page Dropdown', () => {
-  it('go to NBA page and check dropdown', () => {
-    cy.visit('/NBA');
-    cy.get('#nba-team-dropdown').click()
-
-  });
-})
-
-
-describe('Test NBA Over Button', () => {
-  it('go to NBA page and check Over button', () => {
-    cy.visit('/NBA');
-    cy.get('[value="Over"]')
-
-  });
-})
-
-
-describe('Test NBA Under Button', () => {
-  it('go to NBA page and check Under Button', () => {
-    cy.visit('/NBA');
-    cy.get('[value="Under"]')
   });
 })
 
 
 describe('Test Button Functionalities', () => {
   it('test buttons on appbar and their functionality', () => {
-    cy.get(':nth-child(5) > .MuiButtonBase-root').click()
+    cy.get(':nth-child(5) > .MuiButtonBase-root')
 
   });
 })
 
-describe('Test Premier League Page images', () => {
-  it('go to Premier league page and check images', () => {
-    cy.visit('/EPL');
+
+
+describe('Test NBA homepage card button functionality', () => {
+  it('test buttons on homepage card and their functionality', () => {
+    cy.get('.MuiGrid-root > :nth-child(4) > .MuiButtonBase-root').click()
+    cy.visit("/")
+
+  });
+})
+
+describe('Test NFL homepage card button functionalities', () => {
+  it('test buttons on homepage card and their functionality', () => {
+    cy.get('.MuiGrid-root > :nth-child(5) > .MuiButtonBase-root').click()
+    cy.visit("/")
+
+  });
+})
+
+describe('Test Premier League homepage card button functionalities', () => {
+  it('test buttons on homepage card and their functionality', () => {
+    cy.get(':nth-child(6) > .MuiButtonBase-root').click()
+    cy.visit("/")
+
+  });
+})
+
+
+describe('Test NBA Page and Whos that NBA Team Game', () => {
+  it('test functionalities on NBA Page', () => {
+    cy.visit('/NBA')
+    cy.get(':nth-child(4) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
     cy.get('img')
 
   });
 })
 
-describe('Test Premier League Page Dropdown', () => {
-  it('go to Premier league page and check dropdown', () => {
-    cy.visit('/EPL');
-    cy.get('#epl-player-dropdown')
+
+describe('Test NBA Page and Whos that player Game', () => {
+  it('test functionalities on NBA Page', () => {
+    cy.get(':nth-child(3) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
+    cy.get('#nba-player-dropdown')
 
   });
 })
 
-
-describe('Test Primer League Over Button', () => {
-  it('go to Premier league page and check Over button', () => {
-    cy.visit('/EPL');
+describe('Test NBA Page and Over/Under Game', () => {
+  it('test functionalities on NBA Page', () => {
+    cy.get(':nth-child(5) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
     cy.get('[value="Over"]')
+    cy.get('[value="Under"]')
 
   });
 })
 
 
-describe('Test Priemer Under Button', () => {
-  it('go to Premier league page and check Under Button', () => {
-    cy.visit('/EPL');
-    cy.get('[value="Under"]').click()
+describe('Test NFL Page and Whos that NFL Team Game', () => {
+  it('test functionalities on NFL Page', () => {
+    cy.visit('/NFL')
+    cy.get(':nth-child(4) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
+    cy.get('img')
 
   });
 })
+
+
+describe('Test NFL Page and Whos that player Game', () => {
+  it('test functionalities on NFL Page', () => {
+    cy.get(':nth-child(3) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
+    cy.get('#nfl-player-dropdown')
+
+  });
+})
+
+describe('Test NFL Page and Over/Under Game', () => {
+  it('test functionalities on NFL Page', () => {
+    cy.get(':nth-child(5) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
+    cy.get('[value="Over"]')
+    cy.get('[value="Under"]')
+
+
+  });
+})
+
+describe('Test Premier League Page and Whos that Premier League Team Game', () => {
+  it('test functionalities on Premier League Page', () => {
+    cy.visit('/EPL')
+    cy.get(':nth-child(4) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
+    cy.get('img')
+
+  });
+})
+
+
+describe('Test Premeir League Page and Whos that player Game', () => {
+  it('test functionalities on Premier League Page', () => {
+    cy.get(':nth-child(3) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
+    cy.get('#epl-team-dropdown')
+
+  });
+})
+
+describe('Test Premeir Page and Over/Under Game', () => {
+  it('test functionalities on Premier League Page', () => {
+    cy.get(':nth-child(5) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
+    cy.get('[value="Over"]')
+    cy.get('[value="Under"]')
+
+
+  });
+})
+
+
+
+
+
+
+
+
+
+
+
