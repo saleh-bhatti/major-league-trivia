@@ -155,7 +155,9 @@ class Home extends Component {
             <Particle />
           </div>
 
-          <div style={{ position: 'relative', zIndex: 1 }}>
+    
+          <div style={{ position: 'relative', zIndex: 2 }}>
+
             <NavBar history={this.props.history} />
           </div>
 
