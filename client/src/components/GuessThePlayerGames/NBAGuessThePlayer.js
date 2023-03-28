@@ -187,6 +187,7 @@ const NBAGuessThePlayer = () => {
 
   const handlePlayNow = () => {
     setGameStarted(true);
+    setTimeLeft(60);
   };
 
   const handleGuess = () => {
