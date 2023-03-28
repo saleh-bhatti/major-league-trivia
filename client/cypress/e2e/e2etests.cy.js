@@ -215,7 +215,7 @@ describe('Test Premier League Page and Whos that Premier League Team Game', () =
 })
 
 
-describe('Test Premeir League Page and Whos that player Game', () => {
+describe('Test Premier League Page and Whos that player Game', () => {
   it('test functionalities on Premier League Page', () => {
     cy.get(':nth-child(3) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
     cy.get('#epl-team-dropdown')
@@ -223,7 +223,7 @@ describe('Test Premeir League Page and Whos that player Game', () => {
   });
 })
 
-describe('Test Premeir Page and Over/Under Game', () => {
+describe('Test Premier Page and Over/Under Game', () => {
   it('test functionalities on Premier League Page', () => {
     cy.get(':nth-child(5) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
     cy.get('[value="Over"]')
