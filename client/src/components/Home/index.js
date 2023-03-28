@@ -87,7 +87,7 @@ const styles = (theme) => ({
     marginTop: "10px",
     marginBottom: "10px",
     marginLeft: "10px",
-    marginRight:"10px",
+    marginRight: "10px",
   },
 });
 
@@ -100,7 +100,7 @@ function NavBar(props) {
     <AppBar position="fixed">
 
       <Toolbar>
-        <Typography variant="h5"  style={{ marginRight: "20px" }}>
+        <Typography variant="h5" style={{ marginRight: "20px" }}>
           VASA SPORTS
         </Typography>
 
@@ -138,10 +138,10 @@ function NavBar(props) {
 
           onClick={() => history.push("/Profile")}
         >
-          <Button color="inherit">Profile</Button>
+
         </Link>
 
-        <Button color="inherit">Log out</Button>
+
       </Toolbar>
     </AppBar>
   );

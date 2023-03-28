@@ -12,8 +12,9 @@
     "mysql": "^2.17.1",
     "node-fetch": "^2.6.1",
     "nodemon": "^1.19.3",
-    "react-particles-js": "^3.6.0",
+    "react-particles": "^2.9.3",
     "recompose": "^0.30.0",
+    "tsparticles": "^2.9.3",
     "yarn": "^1.22.18"
   },
   "devDependencies": {
