@@ -12,14 +12,6 @@ const questions = [
     answer: "Under",
   },
   {
-    question: "Did Trae Young average over or under 28pts a game during the 2021-22 NBA season?",
-    answer: "Over",
-  },
-  {
-    question: "Did Demar DeRozan average over or under 20pts a game during the 2021-22 NBA season?",
-    answer: "Over",
-  },
-  {
     question: "Did Miles Bridges average over or under 22pts a game during the 2021-22 NBA season?",
     answer: "Under",
   },
@@ -49,6 +41,22 @@ const questions = [
   },
   {
     question: "Did Kevin Durant average over or under 25pts a game during the 2021-22 NBA season?",
+    answer: "Over",
+  },
+  {
+    question: "Did Terry Rozier average over or under 21pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Jerami Grant average over or under 18pts a game during the 2021-22 NBA season?",
+    answer: "Over",
+  },
+  {
+    question: "Did Bam Adebayo average over or under 20pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Malcolm Brogdon average over or under 16pts a game during the 2021-22 NBA season?",
     answer: "Over",
   },
   {
@@ -86,7 +94,7 @@ const questions = [
   },
   {
     question:
-      "Did Donnovan Mitchell average over or under 25pts a game during the 2021-22 NBA season?",
+      "Did Donovan Mitchell average over or under 25pts a game during the 2021-22 NBA season?",
     answer: "Over",
   },
   {
@@ -107,6 +115,46 @@ const questions = [
   },
   {
     question: "Did Jordan Poole average over or under 20pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Giannis Antetokounmpo average over or under 31pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Kevin Durant average over or under 28pts a game during the 2021-22 NBA season?",
+    answer: "Over",
+  },
+  {
+    question: "Did Luka Dončić average over or under 30pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Trae Young average over or under 26pts a game during the 2021-22 NBA season?",
+    answer: "Over",
+  },
+  {
+    question: "Did DeMar DeRozan average over or under 24pts a game during the 2021-22 NBA season?",
+    answer: "Over",
+  },
+  {
+    question: "Did Kyrie Irving average over or under 24pts a game during the 2021-22 NBA season?",
+    answer: "Over",
+  },
+  {
+    question: "Did Ja Morant average over or under 28pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Nikola Jokić average over or under 28pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Jayson Tatum average over or under 28pts a game during the 2021-22 NBA season?",
+    answer: "Under",
+  },
+  {
+    question: "Did Devin Booker average over or under 28pts a game during the 2021-22 NBA season?",
     answer: "Under",
   },
 ];

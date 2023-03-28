@@ -118,7 +118,123 @@ const questions = [
   {
     answer: "Washington Wizards",
     question: "https://i.ibb.co/SRbf27Q/Screen-Shot-2023-03-26-at-9-31-31-PM.png"
-  }
+  },
+  {
+    answer: "Washington Wizards",
+    question: "https://i.ibb.co/TwP8XFt/wizards.png"
+  },
+  {
+    answer: "Golden State Warriors",
+    question: "https://i.ibb.co/MR0D4h6/warriors.png"
+  },
+  {
+    answer: "Portland Trailblazers",
+    question: "https://i.ibb.co/k2RwfKG/trailblazers.png"
+  },
+  {
+    answer: "Minnesota Timberwolves",
+    question: "https://i.ibb.co/VxVb7GS/timberwolves.png"
+  },
+  {
+    answer: "Pheonix Suns",
+    question: "https://i.ibb.co/H20NT4N/suns.png"
+  },
+  {
+    answer: "San Antonio Spurs",
+    question: "https://i.ibb.co/Lnc31CP/spurs.png"
+  },
+  {
+    answer: "Houston Rockets",
+    question: "https://i.ibb.co/BGhVs1T/rockets.png"
+  },
+  {
+    answer: "Portland Trailblazers",
+    question: "https://i.ibb.co/k2RwfKG/trailblazers.png"
+  },
+  {
+    answer: "Toronto Raptors",
+    question: "https://i.ibb.co/z4bHFDm/raptors.png"
+  },
+  {
+    answer: "Detroit Pistons",
+    question: "https://i.ibb.co/yNBh23w/pistons.png"
+  },
+  {
+    answer: "New Orleans Pelicans",
+    question: "https://i.ibb.co/cQ06fVt/pelicans.png"
+  },
+  {
+    answer: "Indiana Pacers",
+    question: "https://i.ibb.co/NpjfgD8/pacers.png"
+  },
+  {
+    answer: "New Orleans Pelicans",
+    question: "https://i.ibb.co/cQ06fVt/pelicans.png"
+  },
+  {
+    answer: "Denver Nuggets",
+    question: "https://i.ibb.co/6WwpxCx/nugs.png"
+  },
+  {
+    answer: "Brooklyn Nets",
+    question: "https://i.ibb.co/nD35V3M/nets.png"
+  },
+  {
+    answer: "New Orleans Pelicans",
+    question: "https://i.ibb.co/cQ06fVt/pelicans.png"
+  },
+  {
+    answer: "Dallas Mavericks",
+    question: "https://i.ibb.co/X7vyKYP/mavs.png"
+  },
+  {
+    answer: "Los Angeles Lakers",
+    question: "https://i.ibb.co/wcM7VK4/lakers.png"
+  },
+  {
+    answer: "New York Knicks",
+    question: "https://i.ibb.co/Jc0nGfc/knicks.png"
+  },
+  {
+    answer: "Charlotte Hornets",
+    question: "https://i.ibb.co/kXDSp0F/hornets.png"
+  },
+  {
+    answer: "Miami Heat",
+    question: "https://i.ibb.co/SV98tB9/heat.png"
+  },
+  {
+    answer: "Sacremento Kings",
+    question: "https://i.ibb.co/b73RHQM/kings.png"
+  },
+  {
+    answer: "Memphis Grizzlies",
+    question: "https://i.ibb.co/HNgtMBB/grizzlies.png"
+  },
+  {
+    answer: "Los Angeles Clippers",
+    question: "https://i.ibb.co/LRs1x23/clippers.png"
+  },
+  {
+    answer: "Cleveland Cavaliers",
+    question: "https://i.ibb.co/wC2zDJC/cavs.png"
+  },
+  {
+    answer: "Chicago Bulls",
+    question: "https://i.ibb.co/nkQPn3w/bulls.png"
+  },
+  {
+    answer: "Milwaukee Bucks",
+    question: "https://i.ibb.co/MGhmVVr/bucks.png"
+  },
+  {
+    answer: "Boston Celtics",
+    question: "https://i.ibb.co/4T1s36n/boston.png"
+  },
+  {
+    answer: "Atlanta Hawks",
+    question: "https://i.ibb.co/XC8r3nn/atlanta.png"
+  },
 ];
 
     const NBATeamQuestions = questions.sort(() => Math.random() - 0.5)

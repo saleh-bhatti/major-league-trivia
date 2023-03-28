@@ -168,7 +168,7 @@ class Home extends Component {
           </div>
 
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <Box mt={4} textAlign="left">
+            <Box mt={4} >
               <NBAGuessTheTeam />
             </Box>
           </div>
