@@ -75,7 +75,7 @@ const useStyles = makeStyles({
     fontFamily: "Century Gothic, sans-serif",
     textAlign: "center",
   },
-  lastlife: {
+  alert: {
     color: "red",
     fontWeight: "bold",
     fontFamily: "Century Gothic, sans-serif",
@@ -158,17 +158,19 @@ const NBAPlayerDropdown = ({
 
 const NBAGuessThePlayer = () => {
   const numOfTries = 3;
+  const timerValue = 60;
   const [selectedPlayer, setSelectedPlayer] = useState("");
   const [displayGuesses, setDisplayGuesses] = useState([]);
   const [displayAnswers, setDisplayAnswers] = useState([]);
   const [gameOverMessage, setGameOverMessage] = useState("");
+  const [highScoreMessage, setHighScoreMessage] = useState("");
   const [remainingLives, setRemainingLives] = useState(numOfTries);
   const [gameOver, setGameOver] = useState(false);
   const [newHighScore, setNewHighScore] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(timerValue);
   const [gameStarted, setGameStarted] = useState(false);
   const classes = useStyles();
   const currentQuestion = NBAPlayerQuestions[currentQuestionIndex];
@@ -182,16 +184,26 @@ const NBAGuessThePlayer = () => {
     setRemainingLives(numOfTries);
     setGameOver(false);
     setScore(0);
+    setNewHighScore(false)
+    setTimeLeft(timerValue);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
   const handlePlayNow = () => {
     setGameStarted(true);
-    setTimeLeft(60);
   };
 
   const handleGuess = () => {
-    setTimeLeft(60);
+    setTimeLeft(timerValue);
+    if (score > 1) {
+      setTimeLeft(timerValue * 0.75);
+    }
+    if (score > 3) {
+      setTimeLeft(timerValue * 0.5);
+    }
+    if (score >= 8) {
+      setTimeLeft(timerValue * 0.25);
+    }
     if (selectedPlayer === correctAnswer) {
       setDisplayAnswers([
         ...displayAnswers,
@@ -220,24 +232,27 @@ const NBAGuessThePlayer = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
-    }, 1000);
+    let timer = null;
+    if (gameStarted) {
+      timer = setInterval(() => {
+        setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
+      }, 1000);
+    }
 
     return () => clearInterval(timer);
-  }, []);
+  }, [gameStarted]);
 
   useEffect(() => {
     if (remainingLives === 0 || timeLeft === 0) {
       if (score > highScore) {
         setHighScore(score);
         setNewHighScore(true);
-        setGameOverMessage(
-          `Out of Time! The answer was ${correctAnswer}. You got a new high score of ${score}!`
+        setHighScoreMessage(
+          `Game Over! The answer was ${correctAnswer}. You got a new high score of ${score}!`
         );
       } else {
         setGameOverMessage(
-          `Out of Time! The answer was ${correctAnswer}. Your final score is ${score}.`
+          `Game Over! The answer was ${correctAnswer}. Your final score is ${score}.`
         );
       }
       setDisplayGuesses([]);
@@ -289,7 +304,7 @@ const NBAGuessThePlayer = () => {
 
           {gameOver ? (
             <div className={classes.gameOver}>
-              {gameOverMessage}
+              {newHighScore ? highScoreMessage : gameOverMessage}
               <Button
                 onClick={handlePlayAgain}
                 value="Play Again"
@@ -303,11 +318,15 @@ const NBAGuessThePlayer = () => {
             </div>
           ) : null}
           <div className={classes.text}>
-            {!gameOver && <div>{`Time Left: ${timeLeft}s`}</div>}
+            {!gameOver && (
+              <div
+                className={timeLeft < 16 ? classes.alert : classes.text}
+              >{`Time Left: ${timeLeft}s`}</div>
+            )}
           </div>
           {!gameOver && (
             <div
-              className={remainingLives === 1 ? classes.lastlife : classes.text}
+              className={remainingLives === 1 ? classes.alert : classes.text}
             >
               {`Lives Remaining: ${remainingLives}`}
             </div>
@@ -322,10 +341,10 @@ const NBAGuessThePlayer = () => {
       ) : (
         <CardContent>
           <Typography variant="h4" component="h1" className={classes.heading}>
-            Guess the NBA Player
+            Welcome to Guess the NBA Player
           </Typography>
           <Typography variant="h6" component="h2" className={classes.prompt}>
-            Think you're ready?
+          Think You're Ready?
           </Typography>
           <div style={{ textAlign: "center" }}>
             <Button
