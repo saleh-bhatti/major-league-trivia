@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import Particles from "react-tsparticles";
+import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import React from 'react';
 
@@ -25,7 +25,7 @@ function Particle() {
                         value: "#101820FF",
                     },
                 },
-                fpsLimit: 60,
+                fpsLimit: 120,
                 interactivity: {
                     events: {
                         onClick: {
@@ -69,7 +69,7 @@ function Particle() {
                             default: "bounce",
                         },
                         random: false,
-                        speed: 6,
+                        speed: 1,
                         straight: false,
                     },
                     number: {

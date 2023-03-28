@@ -118,10 +118,10 @@ const NBAGuessTheTeam = () => {
   return (
     <Card variant="outlined" className={classes.card}>
       <CardContent>
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" align="center" gutterBottom>
           Guess the NBA Team
         </Typography>
-        <Typography variant="h6" component="h2" gutterBottom>
+        <Typography variant="h6" component="h2" align="center" gutterBottom>
           <img align='center' src={currentQuestion.question} />
         </Typography>
         <NBATeamDropdown
