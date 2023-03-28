@@ -34,6 +34,10 @@ const serverURL = ""; //enable for dev mode
 //env | grep "PORT"
 //copy the number only and paste it in the serverURL in place of PORT, e.g.: const serverURL = "http://ov-research-4.uwaterloo.ca:3000";
 
+
+
+
+
 const fetch = require("node-fetch");
 
 const opacityValue = 0.9;
@@ -45,7 +49,7 @@ const theme = createTheme({
       default: "#e33371",
     },
     primary: {
-      main: "#e33371",
+      main: "#101820FF",
     },
     secondary: {
       main: "#e33371",
@@ -87,7 +91,7 @@ const styles = (theme) => ({
     marginTop: "10px",
     marginBottom: "10px",
     marginLeft: "10px",
-    marginRight:"10px",
+    marginRight: "10px",
   },
 });
 
@@ -100,7 +104,7 @@ function NavBar(props) {
     <AppBar position="fixed">
 
       <Toolbar>
-        <Typography variant="h5"  style={{ marginRight: "20px" }}>
+        <Typography variant="h5" style={{ marginRight: "20px" }}>
           VASA SPORTS
         </Typography>
 
@@ -138,10 +142,10 @@ function NavBar(props) {
 
           onClick={() => history.push("/Profile")}
         >
-          <Button color="inherit">Profile</Button>
+
         </Link>
 
-        <Button color="inherit">Log out</Button>
+
       </Toolbar>
     </AppBar>
   );
@@ -201,25 +205,23 @@ class Home extends Component {
         container
         spacing={0}
         direction="column"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="center"
         style={{ minHeight: "100vh", paddingTop: "100px" }}
       >
 
         <Grid item align="center">
 
-          <Card>
-            <CardContent>
 
               <div className={classes.root}>
                 <NavBar history={this.props.history} />
               </div>
 
 
-              <Typography variant='h1'>
+              <Typography variant='h1' style={{ color: 'white' }}>
                 Welcome to VASA Sports!
               </Typography>
-              <Typography variant='h5'>
+              <Typography variant='h5' style={{ color: 'white' }}>
                 Can you become the sports trivia &#128016;?
               </Typography>
 
@@ -228,7 +230,9 @@ class Home extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => history.push("/NBA")}
               >
-                <Button className={classes.button} color="inherit" variant="outlined"> &#127936; Trivia! </Button>
+                <Button className={classes.button} color="inherit" variant="outlined" style={{ color: 'white' }}>
+                    &#127936; Trivia!
+                  </Button>
               </Link>
 
               <Link
@@ -236,7 +240,7 @@ class Home extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => history.push("/NFL")}
               >
-                <Button className={classes.button} color="inherit" variant="outlined"> &#127944; Trivia! </Button>
+                <Button className={classes.button} color="inherit" variant="outlined"  style={{ color: 'white' }}>  &#127944; Trivia! </Button>
               </Link>
 
               <Link
@@ -244,11 +248,9 @@ class Home extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => history.push("/EPL")}
               >
-                <Button className={classes.button} color="inherit" variant='outlined'> &#9917; Trivia! </Button>
+                <Button className={classes.button} color="inherit" variant='outlined' style={{ color: 'white' }}> &#9917; Trivia! </Button>
               </Link>
 
-            </CardContent>
-          </Card>
 
         </Grid>
       </Grid >
@@ -257,13 +259,17 @@ class Home extends Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-        <div className={classes.root}>
+        <div className={classes.root} style={{ position: 'relative' }}>
           <CssBaseline />
-          <Particle />
-          <Paper className={classes.paper}>{mainMessage}</Paper>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            className={classes.paper}{mainMessage}
+          </div>
+          <div style={{ position: 'absolute', zIndex: 0 }}>
+            <Particle />
+          </div>
         </div>
       </MuiThemeProvider>
-    );
+    ); 
   }
 }
 
