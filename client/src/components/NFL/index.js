@@ -127,10 +127,9 @@ function NavBar(props) {
           style={{ cursor: "pointer" }}
           onClick={() => history.push("/Profile")}
         >
-          <Button color="inherit">Profile</Button>
+
         </Link>
 
-        <Button color="inherit">Log out</Button>
       </Toolbar>
     </AppBar>
   );
@@ -155,29 +154,31 @@ class Home extends Component {
           <div style={{ position: 'absolute', zIndex: 0 }}>
             <Particle />
           </div>
+
     
           <div style={{ position: 'relative', zIndex: 2 }}>
+
             <NavBar history={this.props.history} />
           </div>
-    
+
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Box mt={12} textAlign="left">
               <NFLGuessThePlayer />
             </Box>
           </div>
-    
+
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Box mt={4} textAlign="left">
               <NFLGuessTheTeam />
             </Box>
           </div>
-    
+
           <div style={{ position: 'relative', zIndex: 1 }}>
             <Box mt={4} textAlign="left">
               <NFLOverUnder />
             </Box>
           </div>
-    
+
         </div>
       </MuiThemeProvider>
     );
