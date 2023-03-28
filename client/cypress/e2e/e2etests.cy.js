@@ -223,7 +223,7 @@ describe('Test Premier League Page and Whos that player Game', () => {
   });
 })
 
-describe('Test Premier Page and Over/Under Game', () => {
+describe('Test Premier League Page and Over/Under Game', () => {
   it('test functionalities on Premier League Page', () => {
     cy.get(':nth-child(5) > .MuiBox-root > .MuiPaper-root > .MuiCardContent-root > div > .MuiButtonBase-root').click()
     cy.get('[value="Over"]')
