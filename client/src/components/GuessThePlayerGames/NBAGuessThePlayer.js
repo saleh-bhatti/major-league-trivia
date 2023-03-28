@@ -78,7 +78,7 @@ const useStyles = makeStyles({
   },
   heading: {
     fontWeight: "bold",
-    color: "#1976d2",
+    color: "#101820FF",
     marginBottom: "10px",
   }
 });

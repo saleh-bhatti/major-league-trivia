@@ -23,7 +23,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-
+import Particle from "../Particle";
 //Dev mode
 const serverURL = ""; //enable for dev mode
 
@@ -259,6 +259,7 @@ class Home extends Component {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
+          <Particle />
           <Paper className={classes.paper}>{mainMessage}</Paper>
         </div>
       </MuiThemeProvider>
