@@ -27,6 +27,7 @@ import Select from "@material-ui/core/Select";
 import NFLGuessTheTeam from "../GuessTheTeamGames/NFLGuessTheTeam";
 import NFLGuessThePlayer from "../GuessThePlayerGames/NFLGuessThePlayer";
 import NFLOverUnder from "../OverUnderGames/NFLOverUnder";
+import Particle from "../Particle";
 
 //Dev mode
 const serverURL = ""; //enable for dev mode
@@ -49,7 +50,7 @@ const theme = createTheme({
       default: "#e33371",
     },
     primary: {
-      main: "#e33371",
+      main: "#101820FF",
     },
     secondary: {
       main: "#e33371",
@@ -151,27 +152,32 @@ class Home extends Component {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <Paper className={classes.paper}>
-            <div>
+          <div style={{ position: 'absolute', zIndex: 0 }}>
+            <Particle />
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
             <NavBar history={this.props.history} />
-            </div>
-            
-            <div>
-              <Box mt={12} textAlign="left">
-                <NFLGuessThePlayer />
-              </Box>
-            </div>
-            <div>
-              <Box mt={4} textAlign="left">
-                <NFLGuessTheTeam />
-              </Box>
-            </div>
-            <div>
-              <Box mt={4} textAlign="left">
-                <NFLOverUnder />
-              </Box>
-            </div>
-          </Paper>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={12} textAlign="left">
+              <NFLGuessThePlayer />
+            </Box>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={4} textAlign="left">
+              <NFLGuessTheTeam />
+            </Box>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={4} textAlign="left">
+              <NFLOverUnder />
+            </Box>
+          </div>
+    
         </div>
       </MuiThemeProvider>
     );

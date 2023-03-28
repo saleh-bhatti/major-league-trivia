@@ -26,6 +26,9 @@ import Select from "@material-ui/core/Select";
 import NBAGuessTheTeam from "../GuessTheTeamGames/NBAGuessTheTeam";
 import NBAGuessThePlayer from "../GuessThePlayerGames/NBAGuessThePlayer";
 import NBAOverUnder from "../OverUnderGames/NBAOverUnder";
+import Particle from "../Particle";
+
+
 //Dev mode
 const serverURL = ""; //enable for dev mode
 
@@ -44,13 +47,13 @@ const theme = createTheme({
   palette: {
     type: "light",
     background: {
-      default: "#e33371",
+      default: "#33ccff",
     },
     primary: {
-      main: "#e33371",
+      main: "#101820FF",
     },
     secondary: {
-      main: "#e33371",
+      main: "#000000",
     },
   },
 });
@@ -90,7 +93,7 @@ function NavBar(props) {
   return (
     <AppBar position="fixed">
       <Toolbar>
-        <Typography variant="h5" style={{ marginRight: "20px" }}>
+        <Typography variant="h5">
           VASA SPORTS
         </Typography>
         <Link
@@ -151,30 +154,36 @@ class Home extends Component {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <Paper className={classes.paper}>
-            <div>
+          <div style={{ position: 'absolute', zIndex: 0 }}>
+            <Particle />
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
             <NavBar history={this.props.history} />
-            </div>
-            
-            <div>
-              <Box mt={12} textAlign="left">
-                <NBAGuessThePlayer />
-              </Box>
-            </div>
-            <div>
-              <Box mt={4} textAlign="left">
-                <NBAGuessTheTeam />
-              </Box>
-            </div>
-            <div>
-              <Box mt={4} textAlign="left">
-                <NBAOverUnder />
-              </Box>
-            </div>
-          </Paper>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={12} textAlign="left">
+              <NBAGuessThePlayer />
+            </Box>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={4} textAlign="left">
+              <NBAGuessTheTeam />
+            </Box>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={4} textAlign="left">
+              <NBAOverUnder />
+            </Box>
+          </div>
+    
         </div>
       </MuiThemeProvider>
     );
+    
   }
 }
 
@@ -183,3 +192,5 @@ Home.propTypes = {
 };
 
 export default withStyles(styles)(Home);
+
+

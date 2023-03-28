@@ -26,8 +26,10 @@ import Select from "@material-ui/core/Select";
 import EPLGuessTheTeam from "../GuessTheTeamGames/EPLGuessTheTeam";
 import EPLGuessThePlayer from "../GuessThePlayerGames/EPLGuessThePlayer";
 import EPLOverUnder from "../OverUnderGames/EPLOverUnder"
+import Particle from "../Particle";
 //Dev mode
 const serverURL = ""; //enable for dev mode
+
 
 //Deployment mode instructions
 //const serverURL = "http://ov-research-4.uwaterloo.ca:PORT"; //enable for deployed mode; Change PORT to the port number given to you;
@@ -47,7 +49,7 @@ const theme = createTheme({
       default: "#e33371",
     },
     primary: {
-      main: "#e33371",
+      main: "#101820FF",
     },
     secondary: {
       main: "#e33371",
@@ -151,27 +153,32 @@ class Home extends Component {
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <Paper className={classes.paper}>
-            <div>
+          <div style={{ position: 'absolute', zIndex: 0 }}>
+            <Particle />
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
             <NavBar history={this.props.history} />
-            </div>
-            
-            <div>
-              <Box mt={12} textAlign="left">
-                <EPLGuessThePlayer />
-              </Box>
-            </div>
-            <div>
-              <Box mt={4} textAlign="left">
-                <EPLGuessTheTeam />
-              </Box>
-            </div>
-            <div>
-              <Box mt={4} textAlign="left">
-                <EPLOverUnder />
-              </Box>
-            </div>
-          </Paper>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={12} textAlign="left">
+              <EPLGuessThePlayer />
+            </Box>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={4} textAlign="left">
+              <EPLGuessTheTeam />
+            </Box>
+          </div>
+    
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Box mt={4} textAlign="left">
+              <EPLOverUnder />
+            </Box>
+          </div>
+    
         </div>
       </MuiThemeProvider>
     );
