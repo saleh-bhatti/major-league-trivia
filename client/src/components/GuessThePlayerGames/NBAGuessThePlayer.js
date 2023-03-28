@@ -3,9 +3,6 @@ import NBAPlayers from "../PlayerLists/NBAPlayers";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
@@ -341,7 +338,7 @@ const NBAGuessThePlayer = () => {
       ) : (
         <CardContent>
           <Typography variant="h4" component="h1" className={classes.heading}>
-            Welcome to Guess the NBA Player
+            Welcome to "Who's That Player?"
           </Typography>
           <Typography variant="h6" component="h2" className={classes.prompt}>
           Think You're Ready?

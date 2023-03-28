@@ -128,7 +128,7 @@ const questions = [
     question: "https://i.ibb.co/MR0D4h6/warriors.png"
   },
   {
-    answer: "Portland Trailblazers",
+    answer: "Portland Trail Blazers",
     question: "https://i.ibb.co/k2RwfKG/trailblazers.png"
   },
   {
@@ -148,7 +148,7 @@ const questions = [
     question: "https://i.ibb.co/BGhVs1T/rockets.png"
   },
   {
-    answer: "Portland Trailblazers",
+    answer: "Portland Trail Blazers",
     question: "https://i.ibb.co/k2RwfKG/trailblazers.png"
   },
   {
@@ -204,7 +204,7 @@ const questions = [
     question: "https://i.ibb.co/SV98tB9/heat.png"
   },
   {
-    answer: "Sacremento Kings",
+    answer: "Sacramento Kings",
     question: "https://i.ibb.co/b73RHQM/kings.png"
   },
   {
