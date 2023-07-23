@@ -1,14 +1,9 @@
-# MSCI342-VASAProject
-
-
 Project Description: 
-The purpose of the VASA sports platform is to offer sports trivia and interactive games that aim to entertain and educate sports enthusiasts all 
-over the world. We hope to help everyday sports fans learn more about their favourite teams, players and teams while also learning about the beauty 
-of sports through interactive games :)
+VASA Sports was created to provide a user-friendly, interactive platform for sports enthusiasts to enjoy and educate themselves through trivia and minigames cenetered around the world's most popular leagues and players. The project currently includes games for the NFL, EPL, and NBA with potential to support more leagues in the future.
 
 
 Installation Instructions:
 
-  1. git pull origin main the repository to your own local machine
-  2. Run "yarn dev" or "yarn start" to run the website on your local
+  1. on your local machine, type "git pull origin main" to pull the repository to your own local machine
+  2. "yarn start" to run the appication
   3. Have fun and enjoy :) 
