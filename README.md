@@ -4,6 +4,7 @@ VASA Sports was created to provide a user-friendly, interactive platform for spo
 
 Installation Instructions:
 
-  1. on your local machine, type "git pull origin main" to pull the repository to your own local machine
-  2. "yarn start" to run the appication
-  3. Have fun and enjoy :) 
+  1. clone repository onto your local machine
+  2. type "npm install --legacy-peer-deps" to install all required dependencies
+  3. type "yarn start" to run the application
+  4. have fun and enjoy :)
